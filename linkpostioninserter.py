@@ -37,41 +37,6 @@ def _pickle_method(m):
 copy_reg.pickle(types.MethodType, _pickle_method)
 
 
-
-
-def build_links_position_table():
-    """creates up the basic database structure
-    """
-    db = MySQLDatabase(DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD, DATABASE_NAME)
-    connection = db._create_connection()
-    cursor = connection.cursor()
-
-    # build links_position_in_html table
-    cursor.execute('CREATE TABLE `links_position_css` ('
-                      '`id` BIGINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,'
-                      '`source_article_id` BIGINT UNSIGNED NOT NULL,'
-                      '`target_article_id` BIGINT UNSIGNED NOT NULL,'
-                      ' target_position_in_text INT UNSIGNED NOT NULL,'
-                      ' target_position_in_text_only INT UNSIGNED,'
-                      ' target_position_in_section INT UNSIGNED,'
-                      ' target_position_in_section_in_text_only INT UNSIGNED,'
-                      ' section_name VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,'
-                      ' section_number INT UNSIGNED,'
-                      ' target_position_in_table INT UNSIGNED,'
-                      ' table_number INT UNSIGNED,'
-                      ' table_css_class VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci,'
-                      ' table_css_style VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci,'
-                      ' target_x_coord_1920_1080 INT UNSIGNED DEFAULT NULL,'
-                      ' target_y_coord_1920_1080 INT UNSIGNED DEFAULT NULL ,'
-                      'INDEX(`target_article_id`),'
-                      'INDEX(`source_article_id`)'
-                  ') ENGINE=InnoDB;')
-    connection.close()
-
-
-
-
-
 class Controler(object):
     def __init__(self, path):
         #os.environ["DISPLAY"]=":1"
@@ -108,7 +73,7 @@ class Controler(object):
             page_length, positions = self.get_screen_positions_qt(html.decode('utf-8'))
             print positions
         except Exception, e:
-            print "HTML/POSITION FAIL"
+            print "FAIL: HTML/POSITION"
             print zip_file_path
             print e
 
@@ -117,7 +82,7 @@ class Controler(object):
         except Exception as e:
            db_build_view._db_connection.rollback()
            db_build_view.commit()
-           print "INSERT PAGELENGTH FAIL"
+           print "FAIL: INSERT PAGELENGTH"
            print zip_file_path
            print e
 
@@ -160,7 +125,7 @@ class Controler(object):
                         print zip_file_path
         except FedTextException:
             db_build_view._db_connection.rollback()
-            print('KeyError FedTextParser source article id: %s ' % source_article_id)
+            print('FAIL: KeyError FedTextParser source article id: %s ' % source_article_id)
             print zip_file_path
         except Exception as e:
             db_build_view._db_connection.rollback()

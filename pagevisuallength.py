@@ -61,7 +61,7 @@ class Controler(object):
 
         # setup logging
         LOGGING_FORMAT = '%(levelname)s:\t%(asctime)-15s %(message)s'
-        LOGGING_PATH = '/home/ddimitrov/wikiwsd/tmp1/dbinsertpagelength'+self.path+'.log'
+        LOGGING_PATH = 'tmp/dbinsertpagelength'+self.path+'.log'
         logging.basicConfig(filename=LOGGING_PATH, level=logging.ERROR, format=LOGGING_FORMAT, filemode='w')
 
         zip_file_path = os.path.join(root, file_name)

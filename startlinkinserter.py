@@ -81,7 +81,8 @@ while True:
     while zips and len(processes) < max_task:
         task = zips.pop()
         fout = open("stdout1/stdout_%s.txt" % task,'w')
-        processes.append(subprocess.Popen(['python', '/home/ddimitrov/wikiwsd/linkpostioninserter.py', task],  stdout=fout))
+        #processes.append(subprocess.Popen(['python', '/home/ddimitrov/wikiwsd/linkpostioninserter.py', task],  stdout=fout))
+        processes.append(subprocess.Popen(['python', 'linkpostioninserter.py', task],  stdout=fout))
 
     for p in processes:
         if p.poll() is not None:

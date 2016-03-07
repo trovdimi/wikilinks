@@ -42,7 +42,7 @@ def insert_article_features():
 
     # setup logging
     LOGGING_FORMAT = '%(levelname)s:\t%(asctime)-15s %(message)s'
-    LOGGING_PATH = '/home/ddimitrov/wikiwsd/articlefeaturesinsert.log'
+    LOGGING_PATH = 'tmp/articlefeaturesinsert.log'
     logging.basicConfig(filename=LOGGING_PATH, level=logging.DEBUG, format=LOGGING_FORMAT, filemode='w')
 
     for article in articles:

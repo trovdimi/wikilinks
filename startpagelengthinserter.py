@@ -53,8 +53,9 @@ processes = []
 while True:
     while zips and len(processes) < max_task:
         task = zips.pop()
-        fout = open("stdout/stdout_%s.txt" % task,'w')
-        processes.append(subprocess.Popen(['python -Werror', '/home/ddimitrov/wikiwsd/pagevisuallength.py', task],  stdout=fout))
+        fout = open("tmp/stdout/stdout_%s.txt" % task,'w')
+        #processes.append(subprocess.Popen(['python -Werror', '/home/ddimitrov/wikiwsd/pagevisuallength.py', task],  stdout=fout))
+        processes.append(subprocess.Popen(['python -Werror', 'pagevisuallength.py', task],  stdout=fout))
 
     for p in processes:
         if p.poll() is not None:
