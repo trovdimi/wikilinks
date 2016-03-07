@@ -4,6 +4,8 @@ data/simpleoutput.html
 preparation.log
 *.log
 *.json
+.idea
+*.iml
 tmp.py
 TODO.txt
 tmp
