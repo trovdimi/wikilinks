@@ -33,10 +33,7 @@ class BuilderApp(ConsoleApp):
 
         choice = self.read_choice('Would you like to', [
             'create the database structure', 
-            'extract articles and redirects from the wikipedia dump file',
-            'parse the wikipedia dump file and extract links and disambiguations',
-            'parse the wikipedia dump file and extract ngrams for link detection',
-            'optimize the database'
+            'extract articles and redirects from the wikipedia dump file'
             ])
 
         # setup logging
@@ -66,7 +63,7 @@ class BuilderApp(ConsoleApp):
     def _extract_articles(self):
 
 
-        INPUT_FILE = "/home/ddimitrov/data/enwiki-20150304-pages-articles.xml"#self.read_path('Please enter the path of the wiki dump file [.xml]')
+        INPUT_FILE = "/home/ddimitrov/data/enwiki20150304_plus_clickstream/enwiki-20150205-pages-articles.xml"#self.read_path('Please enter the path of the wiki dump file [.xml]')
         #INPUT_FILE = "/home/ddimitrov/wikiwsd/data/training.xml"#self.read_path('Please enter the path of the wiki dump file [.xml]')
         MAX_ARTICLES_IN_QUEUE = 200#self.read_number('How many articles should be kept in the memory at any time at most?', 200, 20, 1000)
         NUM_THREADS = 1#self.read_number('How many threads shall be used to write to the database?', 20, 1, 50)
