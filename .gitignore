@@ -1,0 +1,10 @@
+*.pyc
+data/simpleinput.txt
+data/simpleoutput.html
+preparation.log
+*.log
+*.json
+tmp.py
+TODO.txt
+tmp
+dbsettings.py
