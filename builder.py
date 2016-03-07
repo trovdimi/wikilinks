@@ -15,11 +15,7 @@ import Queue
 from multiprocessing import JoinableQueue
 from wsd.database import MySQLDatabase
 from wsd.wikipedia import WikipediaReader
-from wsd.wikipedia import WikipediaPreProcessor
-from wsd.wikipedia import NGramExtractor
 from wsd.build import ArticleInserter
-from wsd.build import DisambiguationInserter
-from wsd.build import NGramInserter
 from consoleapp import ConsoleApp
 from dbsettings import *
 
