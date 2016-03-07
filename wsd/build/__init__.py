@@ -1,3 +1,1 @@
 from articleinserter import ArticleInserter
-from disambiguationinserter import DisambiguationInserter
-from ngraminserter import NGramInserter 
