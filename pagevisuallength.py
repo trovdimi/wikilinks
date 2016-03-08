@@ -36,7 +36,7 @@ def build_page_length_table():
     cursor = connection.cursor()
 
     # build links_position_in_html table
-    cursor.execute('CREATE TABLE `page_length_css` ('
+    cursor.execute('CREATE TABLE `page_length` ('
                       '`id` BIGINT UNSIGNED NOT NULL PRIMARY KEY,'
                       ' page_length_1366_768 INT UNSIGNED DEFAULT NULL,'
                       ' page_length_1920_1080 INT UNSIGNED DEFAULT NULL'
@@ -113,7 +113,7 @@ class Controler(object):
                 data['page_length_1366_768'] = None
                 data['page_length_1920_1080'] = None
             #print data
-            sql = "INSERT INTO page_length_css (id,  page_length_1366_768, page_length_1920_1080) VALUES" \
+            sql = "INSERT INTO page_length (id,  page_length_1366_768, page_length_1920_1080) VALUES" \
                    "(%(source_article_id)s, %(page_length_1366_768)s, %(page_length_1920_1080)s);"
             try:
                 cursor.execute(sql, data)

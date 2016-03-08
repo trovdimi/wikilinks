@@ -212,7 +212,7 @@ class MySQLWorkView:
                     """
             coords = []
             try:
-                self._cursor.execute('SELECT source_article_id, target_x_coord_1920_1080, target_y_coord_1920_1080 FROM links_position_css where target_x_coord_1920_1080 is not Null and target_y_coord_1920_1080 is not Null and target_x_coord_1920_1080!=0 and target_y_coord_1920_1080!=0 and source_article_id!=target_article_id;')
+                self._cursor.execute('SELECT source_article_id, target_x_coord_1920_1080, target_y_coord_1920_1080 FROM links where target_x_coord_1920_1080 is not Null and target_y_coord_1920_1080 is not Null and target_x_coord_1920_1080!=0 and target_y_coord_1920_1080!=0 and source_article_id!=target_article_id;')
                 result = self._cursor.fetchall()
                 for row in result:
                     link = {}
@@ -231,7 +231,7 @@ class MySQLWorkView:
                 """
                 pages = {}
                 try:
-                    self._cursor.execute('SELECT *  FROM page_length_css;')
+                    self._cursor.execute('SELECT *  FROM page_length;')
                     result = self._cursor.fetchall()
                     for row in result:
                         pages[row[0]]=row[1]
@@ -248,7 +248,7 @@ class MySQLWorkView:
                 """
         coords = []
         try:
-            self._cursor.execute('select l.source_article_id, l.target_article_id, l.target_x_coord_1920_1080, l.target_y_coord_1920_1080, c.counts, p.page_length_1920_1080 from links_position_css l, clickstream_derived c, page_length_css p where l.source_article_id=c.prev_id and l.target_article_id=c.curr_id and c.link_type_derived like %s and l.source_article_id = p.id and l.target_x_coord_1920_1080 is not Null and l.target_y_coord_1920_1080 is not Null  and l.target_x_coord_1920_1080!=0 and l.target_y_coord_1920_1080!=0  and l.source_article_id!=l.target_article_id;', ("internal%",))
+            self._cursor.execute('select l.source_article_id, l.target_article_id, l.target_x_coord_1920_1080, l.target_y_coord_1920_1080, c.counts, p.page_length_1920_1080 from links l, clickstream_derived c, page_length p where l.source_article_id=c.prev_id and l.target_article_id=c.curr_id and c.link_type_derived like %s and l.source_article_id = p.id and l.target_x_coord_1920_1080 is not Null and l.target_y_coord_1920_1080 is not Null  and l.target_x_coord_1920_1080!=0 and l.target_y_coord_1920_1080!=0  and l.source_article_id!=l.target_article_id;', ("internal%",))
             result = self._cursor.fetchall()
             for row in result:
                 link = {}
@@ -271,7 +271,7 @@ class MySQLWorkView:
                 """
         coords = []
         try:
-            self._cursor.execute('SELECT source_article_id, target_article_id, target_x_coord_1920_1080, target_y_coord_1920_1080 FROM links_position_css where target_x_coord_1920_1080 is not Null and target_y_coord_1920_1080 is not Null and target_x_coord_1920_1080!=0 and target_y_coord_1920_1080!=0 and source_article_id!=target_article_id;')
+            self._cursor.execute('SELECT source_article_id, target_article_id, target_x_coord_1920_1080, target_y_coord_1920_1080 FROM links where target_x_coord_1920_1080 is not Null and target_y_coord_1920_1080 is not Null and target_x_coord_1920_1080!=0 and target_y_coord_1920_1080!=0 and source_article_id!=target_article_id;')
             result = self._cursor.fetchall()
             for row in result:
                 link = {}
@@ -292,7 +292,7 @@ class MySQLWorkView:
                 """
         links = {}
         try:
-            self._cursor.execute('select l.source_article_id, l.target_article_id, l.target_x_coord_1920_1080, l.target_y_coord_1920_1080, c.counts, p.page_length_1920_1080 from links_position_css l, clickstream_derived c, page_length_css p where l.source_article_id=c.prev_id and l.target_article_id=c.curr_id and c.link_type_derived like %s and l.source_article_id = p.id and l.target_x_coord_1920_1080 is not Null and l.target_y_coord_1920_1080 is not Null and l.target_x_coord_1920_1080!=0 and l.target_y_coord_1920_1080!=0 and l.source_article_id!=l.target_article_id;', ("internal%",))
+            self._cursor.execute('select l.source_article_id, l.target_article_id, l.target_x_coord_1920_1080, l.target_y_coord_1920_1080, c.counts, p.page_length_1920_1080 from links l, clickstream_derived c, page_length p where l.source_article_id=c.prev_id and l.target_article_id=c.curr_id and c.link_type_derived like %s and l.source_article_id = p.id and l.target_x_coord_1920_1080 is not Null and l.target_y_coord_1920_1080 is not Null and l.target_x_coord_1920_1080!=0 and l.target_y_coord_1920_1080!=0 and l.source_article_id!=l.target_article_id;', ("internal%",))
             result = self._cursor.fetchall()
             for row in result:
                 link = {}

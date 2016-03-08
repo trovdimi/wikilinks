@@ -15,7 +15,7 @@ def build_page_length_table():
     cursor = connection.cursor()
 
     # build links_position_in_html table
-    cursor.execute('CREATE TABLE `page_length_css` ('
+    cursor.execute('CREATE TABLE `page_length` ('
                       '`id` BIGINT UNSIGNED NOT NULL PRIMARY KEY,'
                       ' page_length_1366_768 INT UNSIGNED DEFAULT NULL,'
                       ' page_length_1920_1080 INT UNSIGNED DEFAULT NULL'
