@@ -150,7 +150,7 @@ class Controler(object):
                else:
                    data['page_length_1920_1080'] = None
                #print data
-               sql = "INSERT INTO page_length_css (id, page_length_1920_1080) VALUES" \
+               sql = "INSERT INTO page_length (id, page_length_1920_1080) VALUES" \
                       "(%(source_article_id)s, %(page_length_1920_1080)s);"
                try:
                    cursor.execute(sql, data)
@@ -176,16 +176,17 @@ class Controler(object):
                 data['target_x_coord_1920_1080'] = None
                 data['target_y_coord_1920_1080'] = None
             #print data
-            sql = "INSERT INTO links_position_css (source_article_id, target_article_id," \
+            sql = "INSERT INTO links (source_article_id, target_article_id," \
                    "target_position_in_text, target_position_in_text_only, target_position_in_section, " \
                    "target_position_in_section_in_text_only, section_name," \
                    " section_number, target_position_in_table, table_number, table_css_class, table_css_style," \
-                   " target_x_coord_1920_1080, target_y_coord_1920_1080) VALUES" \
+                   " target_x_coord_1920_1080, target_y_coord_1920_1080, target_position_in_paragraph, paragraph_number) VALUES" \
                    "(%(source_article_id)s, %(target_article_id)s, %(target_position_in_text)s," \
                    "%(target_position_in_text_only)s, %(target_position_in_section)s,  %(target_position_in_section_in_text_only)s, " \
                    "%(section_name)s, %(section_number)s, %(target_position_in_table)s, %(table_number)s, " \
                    "%(table_css_class)s, %(table_css_style)s," \
-                   "%(target_x_coord_1920_1080)s, %(target_y_coord_1920_1080)s);"
+                   "%(target_x_coord_1920_1080)s, %(target_y_coord_1920_1080)s)," \
+                  "%(target_position_in_paragraph)s, %(paragraph_number)s;"
             try:
                 cursor.execute(sql, data)
                 #logging.info('DB Insert Success for  target article id: "%s" ' % target_article_id)

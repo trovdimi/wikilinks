@@ -14,7 +14,7 @@ def build_links_position_table():
     connection = db._create_connection()
     cursor = connection.cursor()
 
-    cursor.execute('CREATE TABLE `links_position_css` ('
+    cursor.execute('CREATE TABLE `links` ('
                       '`id` BIGINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,'
                       '`source_article_id` BIGINT UNSIGNED NOT NULL,'
                       '`target_article_id` BIGINT UNSIGNED NOT NULL,'
@@ -30,6 +30,8 @@ def build_links_position_table():
                       ' table_css_style VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci,'
                       ' target_x_coord_1920_1080 INT UNSIGNED DEFAULT NULL,'
                       ' target_y_coord_1920_1080 INT UNSIGNED DEFAULT NULL ,'
+                      ' target_position_in_paragraph INT UNSIGNED,'
+                      ' paragraph_number INT UNSIGNED,'
                       'INDEX(`target_article_id`),'
                       'INDEX(`source_article_id`)'
                   ') ENGINE=InnoDB;')
@@ -43,7 +45,7 @@ def build_page_length_table():
     connection = db._create_connection()
     cursor = connection.cursor()
 
-    cursor.execute('CREATE TABLE `page_length_css` ('
+    cursor.execute('CREATE TABLE `page_length` ('
                       '`id` BIGINT UNSIGNED NOT NULL PRIMARY KEY,'
                       ' page_length_1920_1080 INT UNSIGNED DEFAULT NULL'
                   ') ENGINE=InnoDB;')

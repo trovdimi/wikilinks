@@ -126,7 +126,7 @@ class WikipediaFedTextParser():
 
         para_number, position_in_para = self.paragraph_data(link)
 
-        link_data['paragaph_number'] = para_number
+        link_data['paragraph_number'] = para_number
 
         link_data['target_position_in_paragraph'] = position_in_para
         
