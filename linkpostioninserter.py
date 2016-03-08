@@ -18,7 +18,7 @@ import requests
 from xvfbwrapper import Xvfb
 from WikiBrowser import WikiBrowser
 from WikipediaFedTextParser import WikipediaFedTextParser, FedTextException
-from WikipeidaHTMLParser import WikipediaHTMLParser
+from WikipediaHTMLParser import WikipediaHTMLParser
 from wsd.database import MySQLDatabase
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
