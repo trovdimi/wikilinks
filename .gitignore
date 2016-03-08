@@ -1,6 +1,5 @@
 *.pyc
-data/simpleinput.txt
-data/simpleoutput.html
+data
 preparation.log
 *.log
 *.json
