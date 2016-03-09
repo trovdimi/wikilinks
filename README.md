@@ -72,15 +72,28 @@ The clickstream data containing refferer-resource pairs can be imported with the
 
 Please don't forget remove the first line describing the columns before import.
 
-Next the clickstream_derived table has to be created. In this table all referrer resource pairs are classified for the purpose of studing navigation accoring to this schema:  
+Next the clickstream_derived table has to be created. In this table all referrer resource pairs are classified for the purpose of studing navigation accoring to this schema: 
+* `internal-link` a link that links from article a to article b, both in namespace 0
+* `internal-self-loop` a link from article a to article a and article a is in namespace 0 
+* `internal-teleportation` a transition from article a to article b both in namespace 0 but in article a is no (network structural) link to article b
+* `internal-nonexistent` a transition from article a to article b a is in namespace 0 but b is not  
+* `sm-entrypoint` transitions for social media web sites (fb,twitter) to an article in namespace 0
+* `se-entrypoint`  transitions from search engines (google, yahoo, bing) to an article in namespace 0
+* `wikipedia-entrypoint  transitions from other wikipedia projects (other wikipedia project (language editions)) to an article in namespace 0
+* `wikimedia-entrypoint` transitions from other wikimedia projects (other wikimedia project) to an article in namespace 0
+* `noreferrer` transitions somewhere (e.g., from browser’s address bar direct to article ) to an article in namespace 0
+* `other` transitions somewhere (the source is known but not relevant (no search engine no social media no wiki etc.)) to an article in namespace 0
+
  
 ### createwikipedianetworkfromtransitions.py ### 
 Creates a network from the transitions in the clickstream that could have been mapped to links in the `links`. 
 
 ## TODOS ##
-- extract link from cations of figures.
-- extract the text of the link.
-- configurabel number of threads for the crawler, and for the parsers
+- import categories and assing a category to each article.
+- extract links from captions of figures.
+- extract the anchor text of the links.
+- configurabel number of threads for the crawler, and for the parsers.
+
 
 ## License ##
 This project is published under the MIT License.
