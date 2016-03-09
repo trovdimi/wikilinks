@@ -1,6 +1,9 @@
 # WIKILINKS #
 Wikilinks is a parsing framework for Wikipedia. It is based on the code of the wikiwsd project by Paul Laufer
-(xml dump processing) and code by Daniel Lamprecht for parsing HTML text. The framework extracts the id, revision, and
+(xml dump processing) and code by Daniel Lamprecht for parsing HTML text. The framework is intended to extract different link features (topological, visual) from Wikipedia. 
+It can be used in combination with the clickstream [dataset](http://ewulczyn.github.io/Wikipedia_Clickstream_Getting_Started/) by Ellery Wulczyn, Dario Taraborelli from Wikimedia.
+ 
+The framework extracts the id, revision, and
 title of an article form the xml dump. Redirects are resoleved using the xml dump. The corresponding HTML for each article is then crawled from the wikipedia api and processed.
 For each link (`source_article_id`,`target_article_id` pair in the `links` table) in the zero namespace of wikipedia it extracts then the following information:
 - `target_position_in_text target` link's position in text 
