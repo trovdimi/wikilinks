@@ -64,7 +64,19 @@ The `tableclassinserter.py` script creates and populates the table `table_css_cl
 ### heatmaps.py ###
 The `heatmaps.py` script uses the clickstream data and the link data to create heatmaps showing in which regions on screan links are places and consumed.
 
+### createwikipedianetwork.py ###
+Creates a network from the links extracted from the parser. 
+
+### Importing  and classifying the clickstream data.
+The clickstream data containing refferer-resource pairs can be imported with the following SQL statement:
+
+Please don't forget remove the first line describing the columns before import.
+
+Next the clickstream_derived table has to be created. In this table all referrer resource pairs are classified for the purpose of studing navigation accoring to this schema:  
  
+### createwikipedianetworkfromtransitions.py ### 
+Creates a network from the transitions in the clickstream that could have been mapped to links in the `links`. 
+
 ## TODOS ##
 - extract link from cations of figures.
 - extract the text of the link.
