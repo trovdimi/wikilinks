@@ -1,10 +1,10 @@
 # WIKILINKS #
 Wikilinks is a parsing framework for Wikipedia written in Python. It is based on the code of the wikiwsd project by Paul Laufer
-(xml dump processing) and code by Daniel Lamprecht for parsing HTML text. The framework is intended to extract different link features (e.g., network topological, visual) from Wikipedia. 
-It can be used in combination with the clickstream [dataset](http://ewulczyn.github.io/Wikipedia_Clickstream_Getting_Started/) by Ellery Wulczyn, Dario Taraborelli from Wikimedia.
+(XML dump processing) and code by Daniel Lamprecht for parsing HTML text. The framework is intended to extract different link features (e.g., network topological, visual) from Wikipedia in order to study human navigation. 
+It can be used in combination with the clickstream [dataset](http://ewulczyn.github.io/Wikipedia_Clickstream_Getting_Started/) by Ellery Wulczyn, Dario Taraborelli from Wikimedia. 
+The corresponding Wikipedia XML dump can be found [here](https://archive.org/details/enwiki-20150304) for more recent dumps can be found [here](https://en.wikipedia.org/wiki/Wikipedia:Database_download).
  
-The framework extracts the id, revision, and
-title of an article form the xml dump. Redirects are resoleved using the xml dump. The corresponding HTML for each article is then crawled from the wikipedia api and processed.
+The framework extracts the id, revision id, and title (`id`, `rev_id`, `title) of an article form the XML dump. Redirects are resoleved using the XML dump. The corresponding HTML for each article is then crawled from the wikipedia api and processed.
 For each link (`source_article_id`,`target_article_id` pair in the `links` table) in the zero namespace of wikipedia it extracts then the following information:
 - `target_position_in_text target` link's position in text 
 - `target_position_in_text_only` target link's position in text only, all links in tables are ignored
@@ -26,7 +26,7 @@ For each article in the `article` table we also extract the corresponding web pa
 field `page_length_1920_1080` of the table `page_length`. The page lenght can be used in different ways, e.g., normalization.
 
 ### Requirements ###
-MySQL Database 5, PyQt4
+MySQL Database 5, PyQt4, Xvfb
 
 
 ### Building the database ###
@@ -42,10 +42,33 @@ Please copy the dbsettings_template.py file to dbsettings.py and change the sett
 
 ### Modules descrioption and use ##
 
+# builder.py #
+After creating the databese this should be the first script to execute.
+The interactive `builder.py` script should be rather self-explanatory. It allows one to:
 
+1. Create the basic database structure (create tables: articles and rederects )
+2. Create the reference entries for articles by parsing the Wikipedia dump files and resolving redirects
+
+# crawler.py#
+The `crawler.py`  uses the `id` and `rev_id` of an article in the 'articles' table to crawl corresponding the HTML file. 
+This process takes around 2 days with  20 threads. The size of the zipped dump is around 60GB. 
+
+
+# startlinkinserter.py #
+The `startlinkinserter.py` script creates and populates the tables: `links`, `page_length`. Xfvb screen has to be available at DISPLAY 1, before it can be run since it extracts visual postions of the links. 
+You will need a lot of RAM for this process and it can take some days to finish.
+
+# tableclassinserter.py #
+The `tableclassinserter.py` script creates and populates the table `table_css_class`. 
+
+# heatmaps.py#
+The `heatmaps.py` script uses the clickstream data and the link data to create heatmaps showing in which regions on screan links are places and consumed.
+
+ 
 ### TODOS ###
 - extract link from cations of figures.
 - extract the text of the link.
+- configurabel number of threads for the crawler, and for the parsers
 
 ### License ###
 This project is published under the MIT License.

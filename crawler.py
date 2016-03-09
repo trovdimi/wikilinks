@@ -10,13 +10,15 @@ import errno
 import zipfile
 from wsd.database import MySQLDatabase
 from dbsettings import *
+
 __author__ = 'dimitrovdr'
 
 #MEDIAWIKI_API_ENDPOINT = 'https://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&oldid=' #see:
 #MEDIAWIKI_API_ENDPOINT = 'https://en.wikipedia.org/w/index.php?oldid='#alternative for getting the html
 MEDIAWIKI_API_ENDPOINT = 'https://en.wikipedia.org/api/rest_v1/page/html/'# see: https://en.wikipedia.org/api/rest_v1/?doc
-STATIC_HTML_DUMP_ARTICLES_DIR = '/home/ddimitrov/wikipedia_html_dump/articles/'
-STATIC_HTML_DUMP_ERRORS_DIR = '/home/ddimitrov/wikipedia_html_dump/error/'
+#STATIC_HTML_DUMP_ARTICLES_DIR = '/home/ddimitrov/wikipedia_html_dump/articles/'
+#STATIC_HTML_DUMP_ERRORS_DIR = '/home/ddimitrov/wikipedia_html_dump/error/'
+
 # Limit the number of threads.
 pool = threading.BoundedSemaphore(20)
 
