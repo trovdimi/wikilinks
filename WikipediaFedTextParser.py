@@ -124,11 +124,13 @@ class WikipediaFedTextParser():
         # position in text only
         link_data['target_position_in_text_only'] = self.position_in_text_only(None, link)
 
-        para_number, position_in_para = self.paragraph_data(link)
+        para_number, position_in_para = self.position_in_paragraph(link)
 
         link_data['paragraph_number'] = para_number
 
         link_data['target_position_in_paragraph'] = position_in_para
+
+        link_data['target_position_in_paragraphs'] = self.postion_in_paragraphs(link)
         
         
         
@@ -225,7 +227,7 @@ class WikipediaFedTextParser():
         return position
 
 
-    def paragraph_data(self, link):
+    def position_in_paragraph(self, link):
         # get paragraphs only
         para_texts, para_overlapping = self.get_element('PARA', None)
         for i, para in enumerate(para_texts, 1):
@@ -239,3 +241,14 @@ class WikipediaFedTextParser():
                     position_in_para = None
                 return para_number, position_in_para
         return None, None
+
+
+    def postion_in_paragraphs(self, link):
+        para_texts, para_overlapping = self.get_element('PARA', None)
+        links = self.get_links_position(para_texts)
+        try:
+            position_in_para = links.index(link)+1
+        except ValueError:
+            position_in_para = None
+        return position_in_para
+

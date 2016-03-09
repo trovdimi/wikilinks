@@ -180,12 +180,13 @@ class Controler(object):
                    "target_position_in_text, target_position_in_text_only, target_position_in_section, " \
                    "target_position_in_section_in_text_only, section_name," \
                    " section_number, target_position_in_table, table_number, table_css_class, table_css_style," \
-                   " target_x_coord_1920_1080, target_y_coord_1920_1080, target_position_in_paragraph, paragraph_number) VALUES" \
+                   " target_x_coord_1920_1080, target_y_coord_1920_1080, target_position_in_paragraphs, " \
+                   "target_position_in_paragraph, paragraph_number) VALUES" \
                    "(%(source_article_id)s, %(target_article_id)s, %(target_position_in_text)s," \
                    "%(target_position_in_text_only)s, %(target_position_in_section)s,  %(target_position_in_section_in_text_only)s, " \
                    "%(section_name)s, %(section_number)s, %(target_position_in_table)s, %(table_number)s, " \
                    "%(table_css_class)s, %(table_css_style)s," \
-                   "%(target_x_coord_1920_1080)s, %(target_y_coord_1920_1080)s)," \
+                   "%(target_x_coord_1920_1080)s, %(target_y_coord_1920_1080)s), %(target_position_in_paragraphs)s)," \
                   "%(target_position_in_paragraph)s, %(paragraph_number)s;"
             try:
                 cursor.execute(sql, data)

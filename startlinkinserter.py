@@ -30,6 +30,7 @@ def build_links_position_table():
                       ' table_css_style VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci,'
                       ' target_x_coord_1920_1080 INT UNSIGNED DEFAULT NULL,'
                       ' target_y_coord_1920_1080 INT UNSIGNED DEFAULT NULL ,'
+                      ' target_position_in_paragraphs INT UNSIGNED,'
                       ' target_position_in_paragraph INT UNSIGNED,'
                       ' paragraph_number INT UNSIGNED,'
                       'INDEX(`target_article_id`),'

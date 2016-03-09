@@ -5,6 +5,9 @@ build and prepare the database used for the disambiguation library
 
 Author: Paul Laufer
 Date: Oct 2013
+Adapted for wikilinks
+Author Dimitar Dimitrov
+Date: March 2016
 
 '''
 
