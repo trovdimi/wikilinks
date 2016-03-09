@@ -66,7 +66,7 @@ build_links_position_table()
 build_page_length_table()
 zips = []
 
-STATIC_HTML_DUMP_ARTICLES_DIR = '/home/ddimitrov/wikipedia_html_dump/articles/'
+#STATIC_HTML_DUMP_ARTICLES_DIR = '/home/ddimitrov/wikipedia_html_dump/articles/'
 for dirname, dirnames, filenames in os.walk(STATIC_HTML_DUMP_ARTICLES_DIR):
     #print "a"
     for i, subdirname in enumerate(dirnames):
@@ -82,7 +82,7 @@ processes = []
 while True:
     while zips and len(processes) < max_task:
         task = zips.pop()
-        fout = open("stdout1/stdout_%s.txt" % task,'w')
+        fout = open("stdout/stdout_%s.txt" % task,'w')
         #processes.append(subprocess.Popen(['python', '/home/ddimitrov/wikiwsd/linkpostioninserter.py', task],  stdout=fout))
         processes.append(subprocess.Popen(['python', 'linkpostioninserter.py', task],  stdout=fout))
 

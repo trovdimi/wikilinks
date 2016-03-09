@@ -53,7 +53,7 @@ class Controler(object):
 
         # setup logging
         LOGGING_FORMAT = '%(levelname)s:\t%(asctime)-15s %(message)s'
-        LOGGING_PATH = '/home/ddimitrov/wikipedia_html_dump/dbinsert.log'
+        LOGGING_PATH = 'tmp/tableclass-dbinsert.log'
         logging.basicConfig(filename=LOGGING_PATH, level=logging.DEBUG, format=LOGGING_FORMAT, filemode='w')
 
         html_parser = WikipediaHTMLTableParser()
@@ -88,7 +88,7 @@ class Controler(object):
         return source_article_id
 
     def manageWork(self, nProcess):
-        STATIC_HTML_DUMP_ARTICLES_DIR = '/home/ddimitrov/wikipedia_html_dump/articles/'
+        #STATIC_HTML_DUMP_ARTICLES_DIR = '/home/ddimitrov/wikipedia_html_dump/articles/'
         pool = multiprocessing.Pool(processes=nProcess)
         for dirname, dirnames, filenames in os.walk(STATIC_HTML_DUMP_ARTICLES_DIR):
             for subdirname in dirnames:

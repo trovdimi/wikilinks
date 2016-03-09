@@ -16,7 +16,7 @@ def build_article_features_table():
     connection = db._create_connection()
     cursor = connection.cursor()
 
-    # build links_position_in_html table
+    # build article_featues table
     cursor.execute('CREATE TABLE `article_features` ('
            '`id` bigint(20) unsigned NOT NULL,'
            '`in_degree` int(11) NOT NULL DEFAULT 0,'
@@ -42,7 +42,7 @@ def insert_article_features():
 
     # setup logging
     LOGGING_FORMAT = '%(levelname)s:\t%(asctime)-15s %(message)s'
-    LOGGING_PATH = 'tmp/articlefeaturesinsert.log'
+    LOGGING_PATH = 'tmp/articlefeatures-dbinsert.log'
     logging.basicConfig(filename=LOGGING_PATH, level=logging.DEBUG, format=LOGGING_FORMAT, filemode='w')
 
     for article in articles:
@@ -77,7 +77,7 @@ def insert_article_features():
     connection.close()
 
 if __name__ == '__main__':
-    #build_article_features_table()
+    build_article_features_table()
     insert_article_features()
 
 

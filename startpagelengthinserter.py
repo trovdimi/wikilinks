@@ -37,7 +37,7 @@ import sys
 import time
 zips = []
 
-STATIC_HTML_DUMP_ARTICLES_DIR = '/home/ddimitrov/wikipedia_html_dump/articles/'
+#STATIC_HTML_DUMP_ARTICLES_DIR = '/home/ddimitrov/wikipedia_html_dump/articles/'
 for dirname, dirnames, filenames in os.walk(STATIC_HTML_DUMP_ARTICLES_DIR):
     #print "a"
     for i, subdirname in enumerate(dirnames):

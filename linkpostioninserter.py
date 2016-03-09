@@ -199,8 +199,7 @@ class Controler(object):
         return target_article_id
 
     def manageWork(self):
-        STATIC_HTML_DUMP_ARTICLES_DIR = '/home/ddimitrov/wikipedia_html_dump/articles/'+self.path
-        for root, dirs, files in os.walk(STATIC_HTML_DUMP_ARTICLES_DIR):
+        for root, dirs, files in os.walk(STATIC_HTML_DUMP_ARTICLES_DIR+self.path):
             for i, file_name in enumerate(files):
                 if file_name.endswith(".zip"):
                     self.parse_article(file_name,root)
@@ -248,7 +247,7 @@ class Controler(object):
         css = soup.find("link", {"rel": "stylesheet"})
         if css is not None:
             css['href'] = 'https:' + css['href']
-            headers = {'user-agent': 'dimitar.dimitrov@gesis.org'}
+            headers = {'user-agent': EMAIL}
             r = requests.get(css['href'], headers=headers, stream=True)
             css['href'] = ""
             if r.status_code == 200:

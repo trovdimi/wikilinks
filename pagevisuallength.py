@@ -35,10 +35,9 @@ def build_page_length_table():
     connection = db._create_connection()
     cursor = connection.cursor()
 
-    # build links_position_in_html table
+    # build page_length table
     cursor.execute('CREATE TABLE `page_length` ('
                       '`id` BIGINT UNSIGNED NOT NULL PRIMARY KEY,'
-                      ' page_length_1366_768 INT UNSIGNED DEFAULT NULL,'
                       ' page_length_1920_1080 INT UNSIGNED DEFAULT NULL'
                   ') ENGINE=InnoDB;')
     connection.close()
@@ -61,7 +60,7 @@ class Controler(object):
 
         # setup logging
         LOGGING_FORMAT = '%(levelname)s:\t%(asctime)-15s %(message)s'
-        LOGGING_PATH = 'tmp/dbinsertpagelength'+self.path+'.log'
+        LOGGING_PATH = 'tmp/pagelength-dbinsert-'+self.path+'.log'
         logging.basicConfig(filename=LOGGING_PATH, level=logging.ERROR, format=LOGGING_FORMAT, filemode='w')
 
         zip_file_path = os.path.join(root, file_name)
@@ -124,9 +123,8 @@ class Controler(object):
 
     def manageWork(self):
         print "manage"
-        STATIC_HTML_DUMP_ARTICLES_DIR = '/home/ddimitrov/wikipedia_html_dump/articles/'+self.path
         #pool = multiprocessing.Pool(processes=nProcess)
-        for root, dirs, files in os.walk(STATIC_HTML_DUMP_ARTICLES_DIR):
+        for root, dirs, files in os.walk(STATIC_HTML_DUMP_ARTICLES_DIR + self.path):
             #print "o"
             for i, file_name in enumerate(files):
                 if file_name.endswith(".zip"):
@@ -173,7 +171,7 @@ class Controler(object):
 	css = soup.find("link", {"rel": "stylesheet"})
         if css is not None:
 	   css['href']= 'https:'+css['href']
-           headers = {'user-agent': 'dimitar.dimitrov@gesis.org'}
+           headers = {'user-agent': EMAIL}
            r = requests.get(css['href'], headers=headers, stream=True)
            css['href']= ""
            if r.status_code == 200:
@@ -202,7 +200,7 @@ class Controler(object):
 
 
 if __name__ == '__main__':
-        #build_page_length_table(
+        #build_page_length_table()
         #print "wooo"
         print sys.argv
         c = Controler(sys.argv[1])
