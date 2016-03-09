@@ -3,9 +3,9 @@
 '''
 
 DATABASE_HOST = 'localhost'
-DATABASE_USER = 'root'
-DATABASE_PASSWORD = 'wikidb'
-DATABASE_NAME = 'wikidb'
+DATABASE_USER = 'wikilinks'
+DATABASE_PASSWORD = 'wikilinks'
+DATABASE_NAME = 'wikilinks'
 WIKI_DUMP_XML_FILE = '/path/to/dump/xml' # e.g, enwiki-20150304-pages-articles.xml
 MEDIAWIKI_API_ENDPOINT = 'https://en.wikipedia.org/api/rest_v1/page/html/'# see: https://en.wikipedia.org/api/rest_v1/?doc
 STATIC_HTML_DUMP_ARTICLES_DIR = '/path/to/wikipedia_html_dump/articles/'

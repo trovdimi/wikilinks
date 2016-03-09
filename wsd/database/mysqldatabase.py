@@ -45,7 +45,7 @@ class MySQLDatabase:
         logging.info('Building table redirects...')
         cursor.execute('CREATE TABLE `redirects` ('
                            '`id` BIGINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,'
-                           '`source_article_name` VARCHAR(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,'
+                           '`source_article_name` VARCHAR(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,'
                            '`target_article_name` VARCHAR(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,'
                            'CONSTRAINT UNIQUE INDEX USING HASH(`source_article_name`)'
                        ') ENGINE = InnoDB;')

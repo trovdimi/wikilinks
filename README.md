@@ -26,7 +26,13 @@ field `page_length_1920_1080` of the table `page_length`. The page lenght can be
 
 
 ### Building the database ###
+'CREATE DATABASE `wikilinks` DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_bin;
+ GRANT ALL ON `wikilinks`.* TO `wikilinks`@`localhost` IDENTIFIED BY 'wikilinks';
+ GRANT ALL ON `wikilinks`.* TO `wikilinks`@`%` IDENTIFIED BY 'wikilinks';'
 
+
+We use binary collation for comparing string i.e., article titles
+[http://stackoverflow.com/questions/5526334/what-effects-does-using-a-binary-collation-have]
 
 
 

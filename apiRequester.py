@@ -1,6 +1,4 @@
 from scipy.stats._discrete_distns import zipf_gen
-
-__author__ = 'dimitrovdr'
 import requests
 import threading
 import json
@@ -12,7 +10,7 @@ import errno
 import zipfile
 from wsd.database import MySQLDatabase
 from dbsettings import *
-
+__author__ = 'dimitrovdr'
 
 #MEDIAWIKI_API_ENDPOINT = 'https://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&oldid=' #see:
 #MEDIAWIKI_API_ENDPOINT = 'https://en.wikipedia.org/w/index.php?oldid='#alternative for getting the html

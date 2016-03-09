@@ -32,7 +32,7 @@ def build_table():
     cursor.execute('CREATE TABLE `table_css_class` ('
                       '`id` BIGINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,'
                       '`source_article_id` BIGINT UNSIGNED NOT NULL,'
-                      ' css_class VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,'
+                      ' css_class VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,'
                       'INDEX(`source_article_id`)'
                   ') ENGINE=InnoDB;')
     connection.close()
