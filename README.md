@@ -31,8 +31,7 @@ field `page_length_1920_1080` of the table `page_length`. The page lenght can be
     GRANT ALL ON `wikilinks`.* TO `wikilinks`@`%` IDENTIFIED BY 'wikilinks';
 
 
-We use binary collation for comparing string i.e., article titles
-[see stackoverflow entry](http://stackoverflow.com/questions/5526334/what-effects-does-using-a-binary-collation-have).
+We use binary collation for comparing string, i.e., article titles - [see stackoverflow entry](http://stackoverflow.com/questions/5526334/what-effects-does-using-a-binary-collation-have).
 
 
 Please copy the dbsettings_template.py file to dbsettings.py and change the settings accordingly to your database setup.
