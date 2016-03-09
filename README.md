@@ -25,8 +25,8 @@ For each link (`source_article_id`,`target_article_id` pair in the `links` table
 For each article in the `article` table we also extract the corresponding web page length of the rendered html and store it in the
 field `page_length_1920_1080` of the table `page_length`. The page lenght can be used in different ways, e.g., normalization.
 
-### Requermnents ###
-MySQL Database, PyQT
+### Requirements ###
+MySQL Database 5, PyQt4
 
 
 ### Building the database ###
