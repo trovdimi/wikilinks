@@ -1,6 +1,6 @@
 # WIKILINKS #
-Wikilinks is a parsing framework for Wikipedia. It is based on the code of the wikiwsd project by Paul Laufer
-(xml dump processing) and code by Daniel Lamprecht for parsing HTML text. The framework is intended to extract different link features (topological, visual) from Wikipedia. 
+Wikilinks is a parsing framework for Wikipedia written in Python. It is based on the code of the wikiwsd project by Paul Laufer
+(xml dump processing) and code by Daniel Lamprecht for parsing HTML text. The framework is intended to extract different link features (e.g., network topological, visual) from Wikipedia. 
 It can be used in combination with the clickstream [dataset](http://ewulczyn.github.io/Wikipedia_Clickstream_Getting_Started/) by Ellery Wulczyn, Dario Taraborelli from Wikimedia.
  
 The framework extracts the id, revision, and
@@ -26,6 +26,7 @@ For each article in the `article` table we also extract the corresponding web pa
 field `page_length_1920_1080` of the table `page_length`. The page lenght can be used in different ways, e.g., normalization.
 
 ### Requermnents ###
+MySQL Database, PyQT
 
 
 ### Building the database ###
@@ -38,6 +39,8 @@ We use binary collation for comparing string, i.e., article titles - [see stacko
 
 
 Please copy the dbsettings_template.py file to dbsettings.py and change the settings accordingly to your database setup.
+
+### Modules descrioption and use ##
 
 
 ### TODOS ###
