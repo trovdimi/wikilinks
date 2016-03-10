@@ -1,6 +1,6 @@
 # WIKILINKS #
 Wikilinks is a parsing framework for Wikipedia written in Python. The framework is intended to extract different link features (e.g., network topological, visual) from Wikipedia in order to study human navigation. 
-It can be used in combination with the clickstream [dataset](http://ewulczyn.github.io/Wikipedia_Clickstream_Getting_Started/) by Ellery Wulczyn, Dario Taraborelli from Wikimedia. 
+It can be used in combination with the clickstream [dataset](http://ewulczyn.github.io/Wikipedia_Clickstream_Getting_Started/) by Ellery Wulczyn and Dario Taraborelli from Wikimedia. 
 The corresponding Wikipedia XML dump can be found [here](https://archive.org/details/enwiki-20150304). Click [here](https://en.wikipedia.org/wiki/Wikipedia:Database_download) for more recent dumps.
  
 The framework extracts the  `id`, `rev_id` and `title` of an article form the XML dump. Redirects are resoleved using the XML dump. The corresponding HTML file for each article is then crawled from the Wikimedia API and processed.
@@ -89,7 +89,7 @@ The `clickstream_derived.sql` is the last one to be executed. This script matche
 ### createwikipedianetwork.py ###
 Creates the Wikipedia network in a graph tool format from the unique links extracted from the parser.  
  
-### createwikipedianetworkfromtransitions.py ### 
+### createtransitionsnetwork.py ###
 Creates a network in a graph tool format from the transitions in the clickstream  that could have been mapped to links in the `links` table. 
 
 ### heatmaps.py ###
