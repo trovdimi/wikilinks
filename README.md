@@ -2,7 +2,7 @@
 Wikilinks is a parsing framework for Wikipedia written in Python. It is based on the code of the wikiwsd project by Paul Laufer
 (XML dump processing) and code by Daniel Lamprecht for parsing HTML text. The framework is intended to extract different link features (e.g., network topological, visual) from Wikipedia in order to study human navigation. 
 It can be used in combination with the clickstream [dataset](http://ewulczyn.github.io/Wikipedia_Clickstream_Getting_Started/) by Ellery Wulczyn, Dario Taraborelli from Wikimedia. 
-The corresponding Wikipedia XML dump can be found [here](https://archive.org/details/enwiki-20150304) for more recent dumps can be found [here](https://en.wikipedia.org/wiki/Wikipedia:Database_download).
+The corresponding Wikipedia XML dump can be found [here](https://archive.org/details/enwiki-20150304). Click [here](https://en.wikipedia.org/wiki/Wikipedia:Database_download) for more recent dumps.
  
 The framework extracts the id, revision id, and title (`id`, `rev_id`, `title`) of an article form the XML dump. Redirects are resoleved using the XML dump. The corresponding HTML for each article is then crawled from the wikipedia api and processed.
 For each link (`source_article_id`,`target_article_id` pair in the `links` table) in the zero namespace of wikipedia it extracts then the following information:
@@ -63,8 +63,6 @@ After the links are extraced the `links_index.sql` script should be executed in 
 ### tableclassinserter.py ###
 The `tableclassinserter.py` script creates and populates the table `table_css_class`. After the css classes are extraced the `table_css_class_index.sql` script should be executed in order to create index structures.
 
-### heatmaps.py ###
-The `heatmaps.py` script uses the clickstream data and the link data to create heatmaps showing in which regions on screan links are places and consumed.
 
 
 
@@ -95,12 +93,19 @@ Creates the Wikipedia network in a graph tool format from the unique links extra
 ### createwikipedianetworkfromtransitions.py ### 
 Creates a network in a graph tool format from the transitions in the clickstream  that could have been mapped to links in the `links`. 
 
+### heatmaps.py ###
+The `heatmaps.py` script uses the clickstream data and the link data to create heatmaps showing in which regions on screan links are places and consumed.
+
+### rbo.py ###
+The `rbo.py` script calculates the ranked biased overlap between renked transition lists. 
+
 ## TODOS ##
 - import categories and assing a category to each article.
 - extract links from captions of figures.
 - extract the anchor text of the links.
 - configurabel number of threads for the crawler, and for the parsers.
 - add indexes to improve performance 
+
 
 
 ## License ##
