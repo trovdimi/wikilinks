@@ -77,7 +77,7 @@ The `clickstream_derived.sql` is the last one to be executed. This script matche
 * `internal-link` a link that links from article `a` to article `b`, both in the zero namespace. 
 * `internal-self-loop` a link from article `a` to article `a` and article `a` is in the zero namespace.  
 * `internal-teleportation` a transition from article `a` to article `b` both in the zero namespace, but in article `a` is no (network structural) link to article `b`.
-* `internal-nonexistent` a transition from article `a` to article `b`, `a` is in the zero namespace, but `b is not.  
+* `internal-nonexistent` a transition from article `a` to article `b`, `a` is in the zero namespace, but `b` is not.  
 * `sm-entrypoint` transitions for social media web sites (Facebook and Twitter) to an article in the zero namespace.
 * `se-entrypoint`  transitions from search engines (Google, Yahoo! and Bing) to an article in the zero namespace.
 * `wikipedia-entrypoint`  transitions from other wikipedia projects (other wikipedia project (language editions)) to an article in  the zero namespace. 
