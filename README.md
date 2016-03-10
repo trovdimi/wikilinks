@@ -74,16 +74,16 @@ The `unique_links.sql` script have to be execuded after the `links` table is pop
 This table represents the Wikipedia network. 
 
 The `clickstream_derived.sql` is the last one to be executed. This script matches the transitions in the clickstream data and the links extracted by the parser. Additionally, it cassifies the transitions for the purpous of studing navigation accoring to the following schema: 
-* `internal-link` a link that links from article `a` to article `b`, both in the zero namespace 
-* `internal-self-loop` a link from article `a` to article `a` and article `a` is in the zero namespace  
-* `internal-teleportation` a transition from article `a` to article `b` both in the zero namespace, but in article `a` is no (network structural) link to article `b`
-* `internal-nonexistent` a transition from article `a` to article `b`, `a` is in the zero namespace, but `b is not  
-* `sm-entrypoint` transitions for social media web sites (Facebook and Twitter) to an article in the zero namespace
-* `se-entrypoint`  transitions from search engines (Google, Yahoo! and Bing) to an article in the zero namespace
-* `wikipedia-entrypoint  transitions from other wikipedia projects (other wikipedia project (language editions)) to an article in  the zero namespace 
-* `wikimedia-entrypoint` transitions from other wikimedia projects (other wikimedia project) to an article in the zero namespace
-* `noreferrer` transitions from somewhere (e.g., from browser’s address bar direct to article ) to an article in the zero namespace 
-* `other` transitions from somewhere (the source is known but not relevant (no search engine, no social media, no Wiki-project etc.)) to an article in the zero namespace 
+* `internal-link` a link that links from article `a` to article `b`, both in the zero namespace. 
+* `internal-self-loop` a link from article `a` to article `a` and article `a` is in the zero namespace.  
+* `internal-teleportation` a transition from article `a` to article `b` both in the zero namespace, but in article `a` is no (network structural) link to article `b`.
+* `internal-nonexistent` a transition from article `a` to article `b`, `a` is in the zero namespace, but `b is not.  
+* `sm-entrypoint` transitions for social media web sites (Facebook and Twitter) to an article in the zero namespace.
+* `se-entrypoint`  transitions from search engines (Google, Yahoo! and Bing) to an article in the zero namespace.
+* `wikipedia-entrypoint  transitions from other wikipedia projects (other wikipedia project (language editions)) to an article in  the zero namespace. 
+* `wikimedia-entrypoint` transitions from other wikimedia projects (other wikimedia project) to an article in the zero namespace.
+* `noreferrer` transitions from somewhere (e.g., from browser’s address bar direct to article ) to an article in the zero namespace. 
+* `other` transitions from somewhere (the source is known but not relevant (no search engine, no social media, no Wiki-project etc.)) to an article in the zero namespace. 
 
 
 ### createwikipedianetwork.py ###
@@ -103,7 +103,7 @@ The `rbo.py` script calculates the ranked biased overlap between renked transiti
 - extract links from captions of figures.
 - extract the anchor text of the links.
 - configurabel number of threads for the crawler, and for the parsers.
-- add indexes to improve performance 
+- add indexes to improve performance. 
 
 ##  Acknowledgements ##
 - Paul Laufer
