@@ -35,7 +35,7 @@ def insert_article_features():
     connection = db._create_connection()
     cursor = connection.cursor()
 
-    network = load_graph("wikipediaNetwork.xml.gz")
+    network = load_graph("wikipedianetwork.xml.gz")
     print 'graph loaded'
     articles = db_work_view.retrieve_all_articles()
     print 'articles loaded'
