@@ -38,7 +38,7 @@ and a lot of RAM and free hard disk space.
 We use binary collation for comparing strings, i.e., article titles - [see stackoverflow entry](http://stackoverflow.com/questions/5526334/what-effects-does-using-a-binary-collation-have).
 
 
-Please copy the conf_template.py file to conf.py and change the settings accordingly to your database setup and preferences.
+Please copy the `conf_template.py` file to `conf.py` and change the settings accordingly to your database setup and preferences.
 
 ## Modules descrioption and use ##
 
@@ -46,7 +46,7 @@ Please copy the conf_template.py file to conf.py and change the settings accordi
 After creating the databese this should be the first script to execute.
 The interactive `builder.py` script should be rather self-explanatory. It allows one to:
 
-1. Create the basic database structure (create tables: articles and redirects )
+1. Create the basic database structure (create tables: articles and redirects)
 2. Create the reference entries for articles by parsing the Wikipedia dump files and resolving redirects
 
 ### crawler.py ###
