@@ -15,8 +15,8 @@ For each link (`source_article_id`,`target_article_id` pair in the `links` table
 - `table_number` the number of the table
 - `table_css_class` the cascading style sheed class of the table (can be used to classify the tables, i.e., infobox, navibox, etc.)
 - `table_css_style` further styling of the table, extracted from the style element of the table tag (can be used to classify the tables, i.e., infobox, navibox, etc.)
-- `target_x_coord_1920_1080` the x coordinate of the visual position of the left upper corner of the target link for resoluion 1920x1080
-- `target_y_coord_1920_1080` the y coordinate of the visual position of the left upper corner of the target link for resoluion 1920x1080
+- `target_x_coord_1920_1080` the x coordinate of the visual position of the left upper corner of the target link for resolution 1920x1080
+- `target_y_coord_1920_1080` the y coordinate of the visual position of the left upper corner of the target link for resolution 1920x1080
 - `target_position_in_paragraphs` the position of the target link in all paragraphs
 - `target_position_in_paragraph` the position of the target link in a paragraph
 - `paragraph_number` the number of the paragraph
