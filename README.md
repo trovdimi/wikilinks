@@ -35,7 +35,7 @@ and a lot of RAM and free hard disk space.
     GRANT ALL ON `wikilinks`.* TO `wikilinks`@`%` IDENTIFIED BY 'wikilinks';
 
 
-We use binary collation for comparing string, i.e., article titles - [see stackoverflow entry](http://stackoverflow.com/questions/5526334/what-effects-does-using-a-binary-collation-have).
+We use binary collation for comparing strings, i.e., article titles - [see stackoverflow entry](http://stackoverflow.com/questions/5526334/what-effects-does-using-a-binary-collation-have).
 
 
 Please copy the conf_template.py file to conf.py and change the settings accordingly to your database setup and preferences.
@@ -51,7 +51,7 @@ The interactive `builder.py` script should be rather self-explanatory. It allows
 
 ### crawler.py ###
 The `crawler.py`  uses the `id` and `rev_id` of an article in the 'articles' table to crawl corresponding the HTML file. 
-This process takes around 2 days with  20 threads. The size of the zipped dump is around 60GB. 
+This process takes around 2 days with 20 threads. The size of the zipped dump is around 60GB. 
 
 
 ### startlinkinserter.py ###
