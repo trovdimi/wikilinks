@@ -58,8 +58,9 @@ This process takes around 2 days with  20 threads. The size of the zipped dump i
 The `startlinkinserter.py` script creates and populates the tables: `links`, `page_length`. Xfvb screen has to be available at DISPLAY 1, before it can be run since it extracts visual postions of the links. 
 You will need a lot of RAM for this process and it can take some days to finish.
 
+After the links are extraced the `links_index.sql` script should be executed in order to create index structures.
 ### tableclassinserter.py ###
-The `tableclassinserter.py` script creates and populates the table `table_css_class`. 
+The `tableclassinserter.py` script creates and populates the table `table_css_class`. After the css classes are extraced the `table_css_class_index.sql` script should be executed in order to create index structures.
 
 ### heatmaps.py ###
 The `heatmaps.py` script uses the clickstream data and the link data to create heatmaps showing in which regions on screan links are places and consumed.
@@ -68,8 +69,12 @@ The `heatmaps.py` script uses the clickstream data and the link data to create h
 Creates a network from the links extracted from the parser. 
 
 ### Importing  and classifying the clickstream data.
-The scritps for creating and classifing the clickstream data are located in the `sql` folder. The first script to execute is the `clickstream.sql`. 
+The scritps for creating and classifing the clickstream data are located in the `sql` folder. 
+
+The first script to execute is the `clickstream.sql`. It creates the `clickstream` table and imports the (referrer-resource pairs) transitions data.
+
 The `unique_links.sql` script have to be execuded after the `links` table is populated. Since a link can occure multiple times in an article, the `unique_links.sql` script creates a table containing just distinct links. 
+
 This table represents the Wikipedia network. The `clickstream_derived.sql` is the last one to be executed. This script matches the transitions in the clickstream data and the links extracted by the parser. Additionally, it cassifies the transitions for the purpous of studing navigation accoring to the following schema: 
 * `internal-link` a link that links from article a to article b, both in namespace 0
 * `internal-self-loop` a link from article a to article a and article a is in namespace 0 
@@ -81,8 +86,6 @@ This table represents the Wikipedia network. The `clickstream_derived.sql` is th
 * `wikimedia-entrypoint` transitions from other wikimedia projects (other wikimedia project) to an article in namespace 0
 * `noreferrer` transitions somewhere (e.g., from browser’s address bar direct to article ) to an article in namespace 0
 * `other` transitions somewhere (the source is known but not relevant (no search engine no social media no wiki etc.)) to an article in namespace 0
-
- 
 
  
 ### createwikipedianetworkfromtransitions.py ### 
