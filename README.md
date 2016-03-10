@@ -72,7 +72,8 @@ The clickstream data containing referrer-resource pairs can be imported with the
  CREATE TABLE `clickstream` (`prev_id` bigint(20) NOT NULL, `curr_id` bigint(20) NOT NULL, `counts` bigint(20) NOT NULL, `prev_title` varchar(2000) COLLATE utf8_bin NOT NULL, `curr_title` varchar(2000) COLLATE utf8_bin NOT NULL, `link_type` varchar(255) COLLATE utf8_bin NOT NULL, `id` bigint(20) NOT NULL AUTO_INCREMENT, PRIMARY KEY (`id`) ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=0;
  LOAD DATA LOCAL INFILE '/path/to/2015_02_clickstream.tsv' INTO TABLE clickstream COLUMNS TERMINATED BY '\t' LINES TERMINATED BY '\n';
  DELETE FROM clickstream WHERE id=1;
- add some indexes on the columns to improve perf
+
+add some indexes on the columns to improve perf
 
 Please don't forget remove the first line describing the columns before import.
 
