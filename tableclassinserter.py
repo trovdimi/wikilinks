@@ -8,7 +8,7 @@ import MySQLdb
 from WikipediaFedTextParser import WikipediaFedTextParser
 from WikipediaHTMLTableParser import WikipediaHTMLTableParser
 from wsd.database import MySQLDatabase
-from dbsettings import *
+from conf import *
 
 
 def _pickle_method(m):

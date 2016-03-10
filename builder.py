@@ -20,7 +20,7 @@ from wsd.database import MySQLDatabase
 from wsd.wikipedia import WikipediaReader
 from wsd.build import ArticleInserter
 from consoleapp import ConsoleApp
-from dbsettings import *
+from conf import *
 
 class BuilderApp(ConsoleApp):
     '''The EvaluationApp class is a console application to facilitate

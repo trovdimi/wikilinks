@@ -9,7 +9,7 @@ import urllib
 import errno
 import zipfile
 from wsd.database import MySQLDatabase
-from dbsettings import *
+from conf import *
 
 __author__ = 'dimitrovdr'
 

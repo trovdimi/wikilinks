@@ -1,6 +1,6 @@
 from wsd.database import MySQLDatabase
 from graph_tool.all import *
-from dbsettings import *
+from conf import *
 __author__ = 'dimitrovdr'
 
 db = MySQLDatabase(DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD, DATABASE_NAME)

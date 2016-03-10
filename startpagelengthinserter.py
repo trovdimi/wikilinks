@@ -3,7 +3,7 @@ import subprocess
 from wsd.database import MySQLDatabase
 import multiprocessing
 from pagevisuallength import Controler
-from dbsettings import *
+from conf import *
 
 __author__ = 'dimitrovdr'
 

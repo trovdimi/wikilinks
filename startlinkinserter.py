@@ -4,7 +4,7 @@ from linkpostioninserter import Controler
 from wsd.database import MySQLDatabase
 import sys
 import time
-from dbsettings import *
+from conf import *
 __author__ = 'dimitrovdr'
 
 def build_links_position_table():

@@ -6,7 +6,7 @@ import MySQLdb
 from wsd.database import MySQLDatabase
 import matplotlib.cm as cm
 from matplotlib.colors import LogNorm, Normalize, BoundaryNorm, PowerNorm
-from dbsettings import *
+from conf import *
 __author__ = 'dimitrovdr'
 
 from matplotlib import style

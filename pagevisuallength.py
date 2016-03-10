@@ -17,7 +17,7 @@ from wsd.database import MySQLDatabase
 from collections import deque
 from bs4 import BeautifulSoup as Soup
 import time
-from dbsettings import *
+from conf import *
 
 def _pickle_method(m):
     if m.im_self is None:

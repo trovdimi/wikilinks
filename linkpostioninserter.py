@@ -25,7 +25,7 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from bs4 import BeautifulSoup as Soup
 import codecs as cd
 from pyvirtualdisplay import Display
-from dbsettings import *
+from conf import *
 
 
 def _pickle_method(m):

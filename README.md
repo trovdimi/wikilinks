@@ -38,7 +38,7 @@ and a lot of RAM and free hard disk space.
 We use binary collation for comparing string, i.e., article titles - [see stackoverflow entry](http://stackoverflow.com/questions/5526334/what-effects-does-using-a-binary-collation-have).
 
 
-Please copy the dbsettings_template.py file to dbsettings.py and change the settings accordingly to your database setup.
+Please copy the conf_template.py file to conf.py and change the settings accordingly to your database setup and preferences.
 
 ## Modules descrioption and use ##
 
