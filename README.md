@@ -80,7 +80,7 @@ The `clickstream_derived.sql` is the last one to be executed. This script matche
 * `internal-nonexistent` a transition from article `a` to article `b`, `a` is in the zero namespace, but `b is not.  
 * `sm-entrypoint` transitions for social media web sites (Facebook and Twitter) to an article in the zero namespace.
 * `se-entrypoint`  transitions from search engines (Google, Yahoo! and Bing) to an article in the zero namespace.
-* `wikipedia-entrypoint  transitions from other wikipedia projects (other wikipedia project (language editions)) to an article in  the zero namespace. 
+* `wikipedia-entrypoint`  transitions from other wikipedia projects (other wikipedia project (language editions)) to an article in  the zero namespace. 
 * `wikimedia-entrypoint` transitions from other wikimedia projects (other wikimedia project) to an article in the zero namespace.
 * `noreferrer` transitions from somewhere (e.g., from browser’s address bar direct to article ) to an article in the zero namespace. 
 * `other` transitions from somewhere (the source is known but not relevant (no search engine, no social media, no Wiki-project etc.)) to an article in the zero namespace. 
