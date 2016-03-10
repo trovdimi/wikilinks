@@ -11,8 +11,6 @@ from PyQt4.QtGui import QApplication
 import sys
 import requests
 from WikiBrowser import WikiBrowser
-from threadingwebkitparse import Render
-
 from wsd.database import MySQLDatabase
 from collections import deque
 from bs4 import BeautifulSoup as Soup
