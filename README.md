@@ -68,16 +68,9 @@ The `heatmaps.py` script uses the clickstream data and the link data to create h
 Creates a network from the links extracted from the parser. 
 
 ### Importing  and classifying the clickstream data.
-The clickstream data containing referrer-resource pairs can be imported with the following SQL statement:
-   CREATE TABLE `clickstream` (`prev_id` bigint(20) NOT NULL, `curr_id` bigint(20) NOT NULL, `counts` bigint(20) NOT NULL, `prev_title` varchar(2000) COLLATE utf8_bin NOT NULL, `curr_title` varchar(2000) COLLATE utf8_bin NOT NULL, `link_type` varchar(255) COLLATE utf8_bin NOT NULL, `id` bigint(20) NOT NULL AUTO_INCREMENT, PRIMARY KEY (`id`) ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=0;
-   LOAD DATA LOCAL INFILE '/path/to/2015_02_clickstream.tsv' INTO TABLE clickstream COLUMNS TERMINATED BY '\t' LINES TERMINATED BY '\n';
-   DELETE FROM clickstream WHERE id=1;
-
-add some indexes on the columns to improve perf
-
-Please don't forget remove the first line describing the columns before import.
-
-Next the clickstream_derived table has to be created. In this table all referrer resource pairs are classified for the purpose of studing navigation accoring to this schema: 
+The scritps for creating and classifing the clickstream data are located in the `sql` folder. The first script to execute is the `clickstream.sql`. 
+The `unique_links.sql` script have to be execuded after the `links` table is populated. Since a link can occure multiple times in an article, the `unique_links.sql` script creates a table containing just distinct links. 
+This table represents the Wikipedia network. The `clickstream_derived.sql` is the last one to be executed. This script matches the transitions in the clickstream data and the links extracted by the parser. Additionally, it cassifies the transitions for the purpous of studing navigation accoring to the following schema: 
 * `internal-link` a link that links from article a to article b, both in namespace 0
 * `internal-self-loop` a link from article a to article a and article a is in namespace 0 
 * `internal-teleportation` a transition from article a to article b both in namespace 0 but in article a is no (network structural) link to article b
@@ -90,39 +83,7 @@ Next the clickstream_derived table has to be created. In this table all referrer
 * `other` transitions somewhere (the source is known but not relevant (no search engine no social media no wiki etc.)) to an article in namespace 0
 
  
-   CREATE TABLE clickstream_derived LIKE clickstream;
-   INSERT clickstream_derived SELECT * clickstream;
-   ALTER TABLE clickstream_derived ADD link_type_derived VARCHAR(255)
- 
-After all links are parsed form the HTML we can classify the transitions in the clickstream_derived table:
 
-   UPDATE clickstream_derived SET link_type_derived="entry-se" where prev_title ="other-google" or prev_title like "other-bing" or prev_title like "other-yahoo";
-   UPDATE clickstream_derived SET link_type_derived="entry-sm"  where prev_title like "other-twitter" or prev_title like "other-facebook";
-   UPDATE clickstream_derived SET link_type_derived="wikipedia-entrypoint"  where prev_title like "other-wikipedia";
-   UPDATE clickstream_derived SET link_type_derived ="wikimedia-entrypoint"  where prev_title like "other-internal";
-   UPDATE clickstream_derived SET link_type_derived="noreferrer" where prev_title like "other-empty";
-   UPDATE clickstream_derived SET link_type_derived="other"  where prev_title like "other-other";
-
-   select count(*) from clickstream_derived w WHERE exists (SELECT 1 FROM unique_links l WHERE  w.prev_id=l.source_article_id AND w.curr_id=l.target_article_id) and w.link_type_derived is not null;
-
-should be 0 
-
-   UPDATE clickstream_derived w SET w.link_type_derived="internal-link" WHERE exists (SELECT 1 FROM unique_links l WHERE  w.prev_id=l.source_article_id AND w.curr_id=l.target_article_id);
-   select distinct(link_type_derived) from clickstream_derived w  WHERE exists (SELECT 1 FROM unique_links l WHERE  w.prev_id=l.source_article_id AND w.curr_id=l.target_article_id) and w.prev_id = w.curr_id and w.link_type_derived is not null;
-should be 0 
-
-   UPDATE clickstream_derived w SET w.link_type_derived="internal-self-loop"  WHERE exists (SELECT 1 FROM unique_links l WHERE  w.prev_id=l.source_article_id AND w.curr_id=l.target_article_id) and w.prev_id = w.curr_id;
-   select count(*) from  clickstream_derived w WHERE not exists (SELECT 1 FROM unique_links l WHERE  w.prev_id=l.source_article_id AND w.curr_id=l.target_article_id) AND w.prev_id!=0 and w.curr_id!=0 and w.link_type_derived is not null;
-Sould be 0  
-
-   UPDATE clickstream_derived w SET w.link_type_derived="internal-teleportation" WHERE not exists (SELECT 1 FROM unique_links l WHERE  w.prev_id=l.source_article_id AND w.curr_id=l.target_article_id) AND w.prev_id!=0 and w.curr_id!=0
-   select count(*) from clickstream_derived w where not exists (Select 1 from articles  a where a.id =w.curr_id) and w.link_type_derived is not null;
-
-Sould be 0 
-
-   UPDATE clickstream_derived w set w.link_type_derived = "internal-nonexistent" where not exists (Select 1 from articles  a where a.id =w.curr_id)
-   CREATE TABLE unique_links as (SELECT distinct source_article_id, target_article_id FROM links);
-add source_article_id as primary key and index on target_article_id
  
 ### createwikipedianetworkfromtransitions.py ### 
 Creates a network from the transitions in the clickstream that could have been mapped to links in the `links`. 
