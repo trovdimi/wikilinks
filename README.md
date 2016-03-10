@@ -46,8 +46,8 @@ Please copy the `conf_template.py` file to `conf.py` and change the settings acc
 After creating the databese this should be the first script to execute.
 The interactive `builder.py` script should be rather self-explanatory. It allows one to:
 
-1. Create the basic database structure (create tables: articles and redirects)
-2. Create the reference entries for articles by parsing the Wikipedia dump files and resolving redirects
+1. Create the basic database structure (create tables: articles and redirects).
+2. Create the reference entries for articles by parsing the Wikipedia dump files and resolving redirects.
 
 ### crawler.py ###
 The `crawler.py`  uses the `id` and `rev_id` of an article in the 'articles' table to crawl the corresponding HTML file. 
