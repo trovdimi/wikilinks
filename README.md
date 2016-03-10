@@ -26,7 +26,8 @@ For each article in the `article` table we also extract the corresponding web pa
 field `page_length_1920_1080` of the table `page_length`. The page lenght can be used in different ways, e.g., normalization.
 
 ## Requirements ##
-MySQL Database 5, PyQt4, Xvfb
+[MySQL](https://www.mysql.com/), [PyQt4](https://www.riverbankcomputing.com/software/pyqt/intro), [Xvfb](https://en.wikipedia.org/wiki/Xvfb), [Graph Tool](https://graph-tool.skewed.de/)
+and a lot of RAM and free hard disk space.
 
 
 ## Building the database ##
@@ -65,8 +66,7 @@ The `tableclassinserter.py` script creates and populates the table `table_css_cl
 ### heatmaps.py ###
 The `heatmaps.py` script uses the clickstream data and the link data to create heatmaps showing in which regions on screan links are places and consumed.
 
-### createwikipedianetwork.py ###
-Creates a network from the links extracted from the parser. 
+
 
 ### Importing  and classifying the clickstream data.
 The scritps for creating and classifing the clickstream data are located in the `sql` folder. 
@@ -74,8 +74,9 @@ The scritps for creating and classifing the clickstream data are located in the 
 The first script to execute is the `clickstream.sql`. It creates the `clickstream` table and imports the (referrer-resource pairs) transitions data.
 
 The `unique_links.sql` script have to be execuded after the `links` table is populated. Since a link can occure multiple times in an article, the `unique_links.sql` script creates a table containing just distinct links. 
+This table represents the Wikipedia network. 
 
-This table represents the Wikipedia network. The `clickstream_derived.sql` is the last one to be executed. This script matches the transitions in the clickstream data and the links extracted by the parser. Additionally, it cassifies the transitions for the purpous of studing navigation accoring to the following schema: 
+The `clickstream_derived.sql` is the last one to be executed. This script matches the transitions in the clickstream data and the links extracted by the parser. Additionally, it cassifies the transitions for the purpous of studing navigation accoring to the following schema: 
 * `internal-link` a link that links from article a to article b, both in namespace 0
 * `internal-self-loop` a link from article a to article a and article a is in namespace 0 
 * `internal-teleportation` a transition from article a to article b both in namespace 0 but in article a is no (network structural) link to article b
@@ -87,9 +88,12 @@ This table represents the Wikipedia network. The `clickstream_derived.sql` is th
 * `noreferrer` transitions somewhere (e.g., from browser’s address bar direct to article ) to an article in namespace 0
 * `other` transitions somewhere (the source is known but not relevant (no search engine no social media no wiki etc.)) to an article in namespace 0
 
+
+### createwikipedianetwork.py ###
+Creates the Wikipedia network in a graph tool format from the unique links extracted from the parser.  
  
 ### createwikipedianetworkfromtransitions.py ### 
-Creates a network from the transitions in the clickstream that could have been mapped to links in the `links`. 
+Creates a network in a graph tool format from the transitions in the clickstream  that could have been mapped to links in the `links`. 
 
 ## TODOS ##
 - import categories and assing a category to each article.
