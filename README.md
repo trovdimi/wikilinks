@@ -95,46 +95,39 @@ Next the clickstream_derived table has to be created. In this table all referrer
  
 After all links are parsed form the HTML we can classify the transitions in the clickstream_derived table:
 
- UPDATE clickstream_derived
- SET link_type_derived="entry-se" where prev_title ="other-google" or prev_title like "other-bing" or prev_title like "other-yahoo";
+ UPDATE clickstream_derived SET link_type_derived="entry-se" where prev_title ="other-google" or prev_title like "other-bing" or prev_title like "other-yahoo";
 
- UPDATE clickstream_derived
- SET link_type_derived="entry-sm"  where prev_title like "other-twitter" or prev_title like "other-facebook";
+ UPDATE clickstream_derived SET link_type_derived="entry-sm"  where prev_title like "other-twitter" or prev_title like "other-facebook";
  
- UPDATE clickstream_derived
- SET link_type_derived="wikipedia-entrypoint"  where prev_title like "other-wikipedia";
+ UPDATE clickstream_derived SET link_type_derived="wikipedia-entrypoint"  where prev_title like "other-wikipedia";
 
- UPDATE clickstream_derived
- SET link_type_derived ="wikimedia-entrypoint"  where prev_title like "other-internal";
+ UPDATE clickstream_derived SET link_type_derived ="wikimedia-entrypoint"  where prev_title like "other-internal";
 
- UPDATE clickstream_derived
- SET link_type_derived="noreferrer" where prev_title like "other-empty";
+ UPDATE clickstream_derived SET link_type_derived="noreferrer" where prev_title like "other-empty";
 
- UPDATE clickstream_derived
- SET link_type_derived="other"  where prev_title like "other-other";
+ UPDATE clickstream_derived SET link_type_derived="other"  where prev_title like "other-other";
 
 
  select count(*) from clickstream_derived w WHERE exists (SELECT 1 FROM unique_links l WHERE  w.prev_id=l.source_article_id AND w.curr_id=l.target_article_id) and w.link_type_derived is not null;
- should be 0 
+should be 0 
 
  UPDATE clickstream_derived w SET w.link_type_derived="internal-link" WHERE exists (SELECT 1 FROM unique_links l WHERE  w.prev_id=l.source_article_id AND w.curr_id=l.target_article_id);
 
  select distinct(link_type_derived) from clickstream_derived w  WHERE exists (SELECT 1 FROM unique_links l WHERE  w.prev_id=l.source_article_id AND w.curr_id=l.target_article_id) and w.prev_id = w.curr_id and w.link_type_derived is not null;
- should be 0 
+should be 0 
 
- UPDATE clickstream_derived w
- SET w.link_type_derived="internal-self-loop"  WHERE exists (SELECT 1 FROM unique_links l WHERE  w.prev_id=l.source_article_id AND w.curr_id=l.target_article_id) and w.prev_id = w.curr_id;
+ UPDATE clickstream_derived w SET w.link_type_derived="internal-self-loop"  WHERE exists (SELECT 1 FROM unique_links l WHERE  w.prev_id=l.source_article_id AND w.curr_id=l.target_article_id) and w.prev_id = w.curr_id;
 
  select count(*) from  clickstream_derived w WHERE not exists (SELECT 1 FROM unique_links l WHERE  w.prev_id=l.source_article_id AND w.curr_id=l.target_article_id) AND w.prev_id!=0 and w.curr_id!=0 and w.link_type_derived is not null;
- Sould be 0  
+Sould be 0  
 
  UPDATE clickstream_derived w SET w.link_type_derived="internal-teleportation" WHERE not exists (SELECT 1 FROM unique_links l WHERE  w.prev_id=l.source_article_id AND w.curr_id=l.target_article_id) AND w.prev_id!=0 and w.curr_id!=0
 
  select count(*) from clickstream_derived w where not exists (Select 1 from articles  a where a.id =w.curr_id) and w.link_type_derived is not null;
- Sould be 0 
 
- UPDATE clickstream_derived w
- set w.link_type_derived = "internal-nonexistent" where not exists (Select 1 from articles  a where a.id =w.curr_id)
+Sould be 0 
+
+ UPDATE clickstream_derived w set w.link_type_derived = "internal-nonexistent" where not exists (Select 1 from articles  a where a.id =w.curr_id)
 
  
  CREATE TABLE unique_links as (SELECT distinct source_article_id, target_article_id FROM links);
