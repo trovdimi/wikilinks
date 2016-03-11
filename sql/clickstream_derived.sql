@@ -5,12 +5,12 @@ CREATE TABLE `clickstream_derived` LIKE `clickstream`;
 INSERT `clickstream_derived` SELECT * FROM `clickstream`;
 ALTER TABLE `clickstream_derived` ADD `link_type_derived` VARCHAR(255);
 
-ALTER TABLE clickstream_derived ADD INDEX (prev_id);
+/*ALTER TABLE clickstream_derived ADD INDEX (prev_id);
 ALTER TABLE clickstream_derived ADD INDEX (curr_id);
 ALTER TABLE clickstream_derived ADD INDEX (counts);
 ALTER TABLE clickstream_derived ADD INDEX (prev_title);
 ALTER TABLE clickstream_derived ADD INDEX (curr_title);
-ALTER TABLE clickstream_derived ADD INDEX (link_type);
+ALTER TABLE clickstream_derived ADD INDEX (link_type);*/
 
 UPDATE clickstream_derived SET link_type_derived="entry-se" WHERE prev_title ="other-google" OR prev_title LIKE "other-bing" OR prev_title LIKE "other-yahoo";
 UPDATE clickstream_derived SET link_type_derived="entry-sm"  WHERE prev_title LIKE "other-twitter" OR prev_title LIKE "other-facebook";
