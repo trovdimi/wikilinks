@@ -13,13 +13,10 @@ For each link (`source_article_id`,`target_article_id` pair in the `links` table
 - `section_number` the number of the section
 - `target_position_in_table` position of the target link in the table
 - `table_number` the number of the table
-- `table_css_class` the cascading style sheed class of the table (can be used to classify the tables, i.e., infobox, navibox, etc.)
-- `table_css_style` further styling of the table, extracted from the style element of the table tag (can be used to classify the tables, i.e., infobox, navibox, etc.)
+- `table_css_class` the cascading style sheed class of the table (can be used to classify the tables, i.e., infobox, navbox, etc.)
+- `table_css_style` further styling of the table, extracted from the style element of the table tag (can be used to classify the tables, i.e., infobox, navbox, etc.)
 - `target_x_coord_1920_1080` the x coordinate of the visual position of the left upper corner of the target link for resolution 1920x1080
 - `target_y_coord_1920_1080` the y coordinate of the visual position of the left upper corner of the target link for resolution 1920x1080
-- `target_position_in_paragraphs` the position of the target link in all paragraphs
-- `target_position_in_paragraph` the position of the target link in a paragraph
-- `paragraph_number` the number of the paragraph
 
 For each article in the `article` table we also extract the corresponding web page length of the rendered HTML and store it in the
 field `page_length_1920_1080` of the table `page_length`. The page length can be used in different ways, e.g., normalization.
