@@ -17,8 +17,8 @@ class WikipediaHTMLParser(HTMLParser):
         self.tracking_see_also = False
         self.navbox_counter = 0
         self.in_section = False
-        self.paragraph_found = False
-        self.paragraph_counter = 0
+        # self.paragraph_found = False
+        # self.paragraph_counter = 0
 
     def reset(self):
         self.fed = []
@@ -32,8 +32,8 @@ class WikipediaHTMLParser(HTMLParser):
         self.tracking_see_also = False
         self.navbox_counter = 0
         self.in_section = False
-        self.paragraph_found = False
-        self.paragraph_counter = 0
+        # self.paragraph_found = False
+        # self.paragraph_counter = 0
         HTMLParser.reset(self)
 
     def feed(self, data):
@@ -89,11 +89,11 @@ class WikipediaHTMLParser(HTMLParser):
                         self.fed.append(attrs_dict['class'])
                         self.fed.append('[[[TABLE_CLASS_END]]]\n')
                 self.table_counter += 1
-        elif tag == 'p':
-            self.paragraph_found = True
-            if not self.paragraph_counter:
-                self.fed.append('[[[PARA_BEGIN]]]\n')
-            self.paragraph_counter += 1
+        # elif tag == 'p':
+        #     self.paragraph_found = True
+        #     if not self.paragraph_counter:
+        #         self.fed.append('[[[PARA_BEGIN]]]\n')
+        #     self.paragraph_counter += 1
 
 
 
@@ -114,11 +114,11 @@ class WikipediaHTMLParser(HTMLParser):
             self.in_section = False
             self.fed.extend(self.fed_in_section)
             self.fed_in_section = []
-        elif tag == 'p':
-            if self.paragraph_counter:
-                self.paragraph_counter -= 1
-                if not self.paragraph_counter:
-                    self.fed.append('[[[PARA_END]]]\n')
+        # elif tag == 'p':
+        #     if self.paragraph_counter:
+        #         self.paragraph_counter -= 1
+        #         if not self.paragraph_counter:
+        #             self.fed.append('[[[PARA_END]]]\n')
 
     def handle_data(self, d):
         if self.section_name:

@@ -42,16 +42,16 @@ class Controler(object):
         #os.environ["DISPLAY"]=":1"
         print path
         os.environ["DISPLAY"]=":1"
+        db = MySQLDatabase(DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD, DATABASE_NAME)
+        self.db_build_view = db.get_build_view()
+        self.cursor = self.db_build_view._cursor
 
         self.app = QApplication(sys.argv)
         self.path = path
 
     def parse_article(self, file_name, root):
         #warnings.filterwarnings('error', category=MySQLdb.Warning)
-        db = MySQLDatabase(DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD, DATABASE_NAME)
-        db_build_view = db.get_build_view()
 
-        cursor = db_build_view._cursor
 
         # setup logging
         #LOGGING_FORMAT = '%(levelname)s:\t%(asctime)-15s %(message)s'
@@ -78,10 +78,10 @@ class Controler(object):
             print e
 
         try:
-            self.insert_pagelength(source_article_id, page_length, cursor, zip_file_path)
+            self.insert_pagelength(source_article_id, page_length, zip_file_path)
         except Exception as e:
-           db_build_view._db_connection.rollback()
-           db_build_view.commit()
+           self.db_build_view._db_connection.rollback()
+           self.db_build_view.commit()
            print "FAIL: INSERT PAGELENGTH"
            print zip_file_path
            print e
@@ -92,8 +92,8 @@ class Controler(object):
 
             #resolve links remove not found articles and set the fed_text
             for link in links:
-                if db_build_view._resolve_title(link.split('-----##$$$##-----')[0]
-                        .replace('_', ' ')) is None:
+                print 'in for links'
+                if self.db_build_view._resolve_title(link.split('-----##$$$##-----')[0].replace('_', ' ')) is None:
                     fed_parser.remove_link(link)
             #get links again, no unresolve links in fed_text now
             links = fed_parser.get_links_position(None)
@@ -105,12 +105,10 @@ class Controler(object):
                         position = positions[link]
 
                         self.insert_link(source_article_id, link, fed_parser.get_data_for_link(link),
-                                         position,
-                                         db_build_view, cursor, zip_file_path)
+                                         position, zip_file_path)
                     except KeyError:
                         self.insert_link(source_article_id, link, fed_parser.get_data_for_link(link),
-                                                                 None,
-                                                                 db_build_view, cursor, zip_file_path)
+                                                                 None, zip_file_path)
                         print('FAIL: KeyError Link Position dict for source article id: %s ' % source_article_id)
                         print zip_file_path
 
@@ -118,22 +116,21 @@ class Controler(object):
                 for link in links:
                     try:
                          self.insert_link(source_article_id, link, fed_parser.get_data_for_link(link),
-                                         None,
-                                         db_build_view, cursor, zip_file_path)
+                                         None, zip_file_path)
                     except KeyError:
                         print('FAIL: KeyError Link Position dict for source article id: %s ' % source_article_id)
                         print zip_file_path
         except FedTextException:
-            db_build_view._db_connection.rollback()
+            self.db_build_view._db_connection.rollback()
             print('FAIL: KeyError FedTextParser source article id: %s ' % source_article_id)
             print zip_file_path
         except Exception as e:
-            db_build_view._db_connection.rollback()
+            self.db_build_view._db_connection.rollback()
             print('FAIL: Exception source article id: %s ' % source_article_id)
             print zip_file_path
             print e
-        db_build_view.commit()
-        db_build_view.reset_cache()
+        self.db_build_view.commit()
+        self.db_build_view.reset_cache()
 
 
     def zip2html(self, input_zip):
@@ -141,7 +138,7 @@ class Controler(object):
         files = {name: input_zip.read(name) for name in input_zip.namelist()}
         return files.popitem()[1]
 
-    def insert_pagelength(self, source_article_id, screen_positions_1920_1080, cursor, zip_file_path):
+    def insert_pagelength(self, source_article_id, screen_positions_1920_1080, zip_file_path):
 
                data={}
                data['source_article_id'] = source_article_id
@@ -153,16 +150,16 @@ class Controler(object):
                sql = "INSERT INTO page_length (id, page_length_1920_1080) VALUES" \
                       "(%(source_article_id)s, %(page_length_1920_1080)s);"
                try:
-                   cursor.execute(sql, data)
+                   self.cursor.execute(sql, data)
                except (MySQLdb.Error, MySQLdb.Warning), e:
                    print ('FAIL: Data caused warning or error "%s" for source_article_id: "%s"', data,  source_article_id)
                    print 'FAIL: EXCEPTION:', e
                    print zip_file_path
 
 
-    def insert_link(self, source_article_id, target_article_name, data, position, db_build_view, cursor, zip_file_path):
+    def insert_link(self, source_article_id, target_article_name, data, position,  zip_file_path):
 
-        target_article_id = db_build_view._resolve_title(target_article_name.split('-----##$$$##-----')[0].replace('_', ' '))
+        target_article_id = self.db_build_view._resolve_title(target_article_name.split('-----##$$$##-----')[0].replace('_', ' '))
         if target_article_id is not None:
 
             data['source_article_id'] = source_article_id
@@ -180,16 +177,14 @@ class Controler(object):
                    "target_position_in_text, target_position_in_text_only, target_position_in_section, " \
                    "target_position_in_section_in_text_only, section_name," \
                    " section_number, target_position_in_table, table_number, table_css_class, table_css_style," \
-                   " target_x_coord_1920_1080, target_y_coord_1920_1080, target_position_in_paragraphs, " \
-                   "target_position_in_paragraph, paragraph_number) VALUES" \
+                   " target_x_coord_1920_1080, target_y_coord_1920_1080) VALUES" \
                    "(%(source_article_id)s, %(target_article_id)s, %(target_position_in_text)s," \
                    "%(target_position_in_text_only)s, %(target_position_in_section)s,  %(target_position_in_section_in_text_only)s, " \
                    "%(section_name)s, %(section_number)s, %(target_position_in_table)s, %(table_number)s, " \
                    "%(table_css_class)s, %(table_css_style)s," \
-                   "%(target_x_coord_1920_1080)s, %(target_y_coord_1920_1080)s), %(target_position_in_paragraphs)s)," \
-                  "%(target_position_in_paragraph)s, %(paragraph_number)s;"
+                   "%(target_x_coord_1920_1080)s, %(target_y_coord_1920_1080)s);"
             try:
-                cursor.execute(sql, data)
+                self.cursor.execute(sql, data)
                 #logging.info('DB Insert Success for  target article id: "%s" ' % target_article_id)
             except (MySQLdb.Error, MySQLdb.Warning), e:
                 #print sql
