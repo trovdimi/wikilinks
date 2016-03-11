@@ -36,7 +36,7 @@ class MySQLDatabase:
         cursor.execute('CREATE TABLE `articles` ('
                            '`id` BIGINT UNSIGNED NOT NULL PRIMARY KEY,'
                            '`rev_id` BIGINT UNSIGNED NOT NULL,'
-                           '`title` VARCHAR(2000) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,'
+                           '`title` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,'
                            'CONSTRAINT UNIQUE INDEX USING HASH(`title`),'
                            'CONSTRAINT UNIQUE INDEX USING HASH(`rev_id`)'
                        ') ENGINE=InnoDB;')
@@ -45,8 +45,8 @@ class MySQLDatabase:
         logging.info('Building table redirects...')
         cursor.execute('CREATE TABLE `redirects` ('
                            '`id` BIGINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,'
-                           '`source_article_name` VARCHAR(2000) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,'
-                           '`target_article_name` VARCHAR(2000) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,'
+                           '`source_article_name` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,'
+                           '`target_article_name` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,'
                            'CONSTRAINT UNIQUE INDEX USING HASH(`source_article_name`)'
                        ') ENGINE = InnoDB;')
 
