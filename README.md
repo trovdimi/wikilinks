@@ -40,7 +40,7 @@ We use binary collation for comparing strings, i.e., article titles - [see stack
 
 Please copy the `conf_template.py` file to `conf.py` and change the settings accordingly to your database setup and preferences.
 
-## Modules descrioption and use ##
+## Modules description and use ##
 
 ### builder.py ###
 After creating the databese this should be the first script to execute.
