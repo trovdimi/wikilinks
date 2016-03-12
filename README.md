@@ -3,7 +3,7 @@ Wikilinks is a parsing framework for Wikipedia written in Python. The framework 
 It can be used in combination with the clickstream [dataset](http://ewulczyn.github.io/Wikipedia_Clickstream_Getting_Started/) by Ellery Wulczyn and Dario Taraborelli from Wikimedia. 
 The corresponding Wikipedia XML dump can be found [here](https://archive.org/details/enwiki-20150304). Click [here](https://en.wikipedia.org/wiki/Wikipedia:Database_download) for more recent dumps.
  
-The framework extracts the  `id`, `rev_id` and `title` of an article form the XML dump. Redirects are resoleved using the XML dump. The corresponding HTML file for each article is then crawled from the Wikimedia API and processed.
+The framework extracts the  `id`, `rev_id` and `title` of an article from the XML dump. Redirects are resoleved using the XML dump. The corresponding HTML file for each article is then crawled from the Wikimedia API and processed.
 For each link (`source_article_id`,`target_article_id` pair in the `links` table) in the zero namespace of Wikipedia it extracts then the following information:
 - `target_position_in_text` target link's position in text 
 - `target_position_in_text_only` target link's position in text only, all links in tables are ignored
