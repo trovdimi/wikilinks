@@ -38,7 +38,7 @@ def build_table():
     connection.close()
 
 
-class Controler(object):
+class Controller(object):
     def __init__(self):
 
         nProcess = 10
@@ -53,7 +53,7 @@ class Controler(object):
 
         # setup logging
         LOGGING_FORMAT = '%(levelname)s:\t%(asctime)-15s %(message)s'
-        LOGGING_PATH = 'tmp/tableclass-dbinsert.log'
+        LOGGING_PATH = 'tmp/tableclasses-dbinsert.log'
         logging.basicConfig(filename=LOGGING_PATH, level=logging.DEBUG, format=LOGGING_FORMAT, filemode='w')
 
         html_parser = WikipediaHTMLTableParser()
@@ -103,4 +103,4 @@ class Controler(object):
 
 if __name__ == '__main__':
     build_table()
-    Controler()
+    Controller()
