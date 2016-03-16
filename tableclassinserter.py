@@ -41,7 +41,7 @@ def build_table():
 class Controller(object):
     def __init__(self):
 
-        nProcess = 10
+        nProcess = 20
         self.manageWork(nProcess)
 
     def table_parser(self, file_name, root):
