@@ -37,7 +37,7 @@ def _pickle_method(m):
 copy_reg.pickle(types.MethodType, _pickle_method)
 
 
-class Controler(object):
+class Controller(object):
     def __init__(self, path):
         #os.environ["DISPLAY"]=":1"
         print path
@@ -50,13 +50,6 @@ class Controler(object):
         self.path = path
 
     def parse_article(self, file_name, root):
-        #warnings.filterwarnings('error', category=MySQLdb.Warning)
-
-
-        # setup logging
-        #LOGGING_FORMAT = '%(levelname)s:\t%(asctime)-15s %(message)s'
-        #LOGGING_PATH = '/home/ddimitrov/wikiwsd/tmp/dbinsert'+self.path+'.log'
-        #logging.basicConfig(filename=LOGGING_PATH, level=logging.ERROR, format=LOGGING_FORMAT, filemode='w')
 
         html_parser = WikipediaHTMLParser()
         zip_file_path = os.path.join(root, file_name)
@@ -271,8 +264,8 @@ class Controler(object):
 if __name__ == '__main__':
     print sys.argv
     warnings.filterwarnings('error', category=MySQLdb.Warning)
-    c = Controler(sys.argv[1])
-    #c = Controler('82')
+    c = Controller(sys.argv[1])
+    #c = Controller('82')
     c.manageWork()
 
 
