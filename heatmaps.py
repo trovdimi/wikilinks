@@ -92,7 +92,7 @@ def clicks_heatmap():
     #plt.title("Clicks Heatmap Log Normalized")
 
     plt.show()
-    plt.savefig('clicks_heatmap_lognormed_self_loop_confident.pdf')
+    plt.savefig('output/clicks_heatmap_lognormed_self_loop_confident.pdf')
 
     plt.clf()
     plt.figure(figsize=fig_size)
@@ -103,7 +103,7 @@ def clicks_heatmap():
     #plt.title("Clicks Heatmap Normalized")
 
     plt.show()
-    plt.savefig('clicks_heatmap_normed_self_loop_confident.pdf')
+    plt.savefig('output/clicks_heatmap_normed_self_loop_confident.pdf')
     print "conf done"
 
     heatmap, xedges, yedges = np.histogram2d(x_not_conf, y_not_conf, bins=100, weights=not_confident_values)
@@ -120,7 +120,7 @@ def clicks_heatmap():
     #plt.title("Clicks Heatmap Log Normalized")
 
     plt.show()
-    plt.savefig('clicks_heatmap_lognormed_self_loop_not_confident.pdf')
+    plt.savefig('output/clicks_heatmap_lognormed_self_loop_not_confident.pdf')
 
     plt.clf()
     plt.figure(figsize=fig_size)
@@ -131,7 +131,7 @@ def clicks_heatmap():
     #plt.title("Clicks Heatmap Normalized")
 
     plt.show()
-    plt.savefig('clicks_heatmap_normed_self_loop_not_confident.pdf')
+    plt.savefig('output/clicks_heatmap_normed_self_loop_not_confident.pdf')
     print " not conf done"
 
 
@@ -149,7 +149,7 @@ def clicks_heatmap():
     #plt.title("Clicks Heatmap Log Normalized")
 
     plt.show()
-    plt.savefig('clicks_heatmap_lognormed_self_loop_1.pdf')
+    plt.savefig('output/clicks_heatmap_lognormed_self_loop_1.pdf')
 
     plt.clf()
     plt.figure(figsize=fig_size)
@@ -160,7 +160,7 @@ def clicks_heatmap():
     #plt.title("Clicks Heatmap Normalized")
 
     plt.show()
-    plt.savefig('clicks_heatmap_normed_self_loop_1.pdf')
+    plt.savefig('output/clicks_heatmap_normed_self_loop_1.pdf')
     print "done"
 
 def clicks_heatmap_first_occ():
@@ -196,7 +196,7 @@ def clicks_heatmap_first_occ():
     #plt.title("Clicks Heatmap Log Normalized")
 
     plt.show()
-    plt.savefig('clicks_heatmap_lognormed_self_loop_first_occ.pdf')
+    plt.savefig('output/clicks_heatmap_lognormed_self_loop_first_occ.pdf')
 
     plt.clf()
     plt.figure(figsize=fig_size)
@@ -207,7 +207,7 @@ def clicks_heatmap_first_occ():
     #plt.title("Clicks Heatmap Normalized")
 
     plt.show()
-    plt.savefig('clicks_heatmap_normed_self_loop_first_occ.pdf')
+    plt.savefig('output/clicks_heatmap_normed_self_loop_first_occ.pdf')
     print "done"
 
 def clicks_heatmap_total():
@@ -243,7 +243,7 @@ def clicks_heatmap_total():
     #plt.title("Clicks Heatmap Log Normalized")
 
     plt.show()
-    plt.savefig('clicks_heatmap_lognormed_self_loop_total.pdf')
+    plt.savefig('output/clicks_heatmap_lognormed_self_loop_total.pdf')
 
     plt.clf()
     plt.figure(figsize=fig_size)
@@ -254,7 +254,7 @@ def clicks_heatmap_total():
     #plt.title("Clicks Heatmap Normalized")
 
     plt.show()
-    plt.savefig('clicks_heatmap_normed_self_loop_total.pdf')
+    plt.savefig('output/clicks_heatmap_normed_self_loop_total.pdf')
     print "done"
 
 
@@ -294,7 +294,7 @@ def links_heatmap():
     #plt.title("Links Heatmap Log Normalized")
 
     plt.show()
-    plt.savefig('links_heatmap_lognormed_self_loop.pdf')
+    plt.savefig('output/links_heatmap_lognormed_self_loop.pdf')
 
     plt.clf()
     plt.figure(figsize=fig_size)
@@ -305,7 +305,7 @@ def links_heatmap():
     #plt.title("Links Heatmap Normalized")
 
     plt.show()
-    plt.savefig('links_heatmap_normed_self_loop.pdf')
+    plt.savefig('output/links_heatmap_normed_self_loop.pdf')
 
     print "done"
 
@@ -372,7 +372,7 @@ def multiple_links_heatmap():
     #plt.title("Links Heatmap Log Normalized")
 
     plt.show()
-    plt.savefig('links_heatmap_lognormed_self_loop_unique.pdf')
+    plt.savefig('output/links_heatmap_lognormed_self_loop_unique.pdf')
 
     plt.clf()
     plt.figure(figsize=fig_size)
@@ -383,7 +383,7 @@ def multiple_links_heatmap():
     #plt.title("Links Heatmap Normalized")
 
     plt.show()
-    plt.savefig('links_heatmap_normed_self_loop_unique.pdf')
+    plt.savefig('output/links_heatmap_normed_self_loop_unique.pdf')
 
     print "unique done"
 
@@ -401,7 +401,7 @@ def multiple_links_heatmap():
     #plt.title("Links Heatmap Log Normalized")
 
     plt.show()
-    plt.savefig('links_heatmap_lognormed_self_loop_multiple.pdf')
+    plt.savefig('output/links_heatmap_lognormed_self_loop_multiple.pdf')
 
     plt.clf()
     plt.figure(figsize=fig_size)
@@ -412,7 +412,7 @@ def multiple_links_heatmap():
     #plt.title("Links Heatmap Normalized")
 
     plt.show()
-    plt.savefig('links_heatmap_normed_self_loop_multiple.pdf')
+    plt.savefig('output/links_heatmap_normed_self_loop_multiple.pdf')
 
     print "done"
 
@@ -466,7 +466,7 @@ def links_heatmap_rel_prob():
            y.append(y_normed)
            if links[coord['key']]==0:
 	       #x.append(x_normed)
-               #y.append(y_normed) 
+               #y.append(y_normed)
                values.append(float(coord['counts']))
            else:
                values.append(float(coord['counts'])/float(links[coord['key']]))
@@ -492,7 +492,7 @@ def links_heatmap_rel_prob():
 
 
     plt.show()
-    plt.savefig('clicks-links_heatmap_normed_self_loop.pdf')
+    plt.savefig('output/clicks-links_heatmap_normed_self_loop.pdf')
 
 
     plt.clf()
@@ -504,7 +504,7 @@ def links_heatmap_rel_prob():
 
 
     plt.show()
-    plt.savefig('clicks_over_links_heatmap_normed_self_loop.pdf')
+    plt.savefig('output/clicks_over_links_heatmap_normed_self_loop.pdf')
 
 
     plt.clf()
@@ -516,7 +516,7 @@ def links_heatmap_rel_prob():
 
 
     plt.show()
-    plt.savefig('clicks-links_heatmap_lognormed_self_loop.pdf')
+    plt.savefig('output/clicks-links_heatmap_lognormed_self_loop.pdf')
 
 
     plt.clf()
@@ -528,7 +528,7 @@ def links_heatmap_rel_prob():
 
 
     plt.show()
-    plt.savefig('clicks_over_links_heatmap_lognormed_self_loop.pdf')
+    plt.savefig('output/clicks_over_links_heatmap_lognormed_self_loop.pdf')
 
 
     substraction_hist = np.subtract(links_heatmap_hist, clicks_heatmap_hist)
@@ -549,7 +549,7 @@ def links_heatmap_rel_prob():
     #plt.title("Links Heatmap Normalized")
 
     plt.show()
-    plt.savefig('links-clicks_heatmap_normed_self_loop.pdf')
+    plt.savefig('output/links-clicks_heatmap_normed_self_loop.pdf')
 
 
     plt.clf()
@@ -561,7 +561,7 @@ def links_heatmap_rel_prob():
     #plt.title("Links Heatmap Normalized")
 
     plt.show()
-    plt.savefig('links_over_clicks_heatmap_normed_self_loop.pdf')
+    plt.savefig('output/links_over_clicks_heatmap_normed_self_loop.pdf')
 
     plt.clf()
     plt.figure(figsize=fig_size)
@@ -572,7 +572,7 @@ def links_heatmap_rel_prob():
     #plt.title("Links Heatmap Normalized")
 
     plt.show()
-    plt.savefig('links-clicks_heatmap_lognormed_self_loop.pdf')
+    plt.savefig('output/links-clicks_heatmap_lognormed_self_loop.pdf')
 
 
     plt.clf()
@@ -584,13 +584,15 @@ def links_heatmap_rel_prob():
     #plt.title("Links Heatmap Normalized")
 
     plt.show()
-    plt.savefig('links_over_clicks_heatmap_lognormed_self_loop.pdf')
+    plt.savefig('output/links_over_clicks_heatmap_lognormed_self_loop.pdf')
     print "done"
 
 
 
 if __name__ == '__main__':
-    #links_heatmap()
-    #clicks_heatmap_total()
+    links_heatmap()
+    clicks_heatmap_first_occ()
+    clicks_heatmap_total()
     clicks_heatmap()
-    #multiple_links_heatmap()
+    multiple_links_heatmap()
+    links_heatmap_rel_prob()
