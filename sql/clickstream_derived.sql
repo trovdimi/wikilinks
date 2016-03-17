@@ -20,22 +20,20 @@ UPDATE clickstream_derived SET link_type_derived="noreferrer" WHERE prev_title L
 UPDATE clickstream_derived SET link_type_derived="other"  WHERE prev_title LIKE "other-other";
 
 /*select count(*) from clickstream_derived w WHERE exists (SELECT 1 FROM unique_links l WHERE  w.prev_id=l.source_article_id AND w.curr_id=l.target_article_id) and w.link_type_derived is not null;
- Should be 0 */
-
+ Should be 0 thus we can execute the next update - internal-link*/
 UPDATE clickstream_derived w SET w.link_type_derived="internal-link" WHERE EXISTS (SELECT 1 FROM unique_links l WHERE  w.prev_id=l.source_article_id AND w.curr_id=l.target_article_id);
+
 /*select distinct(link_type_derived) from clickstream_derived w  WHERE exists (SELECT 1 FROM unique_links l WHERE  w.prev_id=l.source_article_id AND w.curr_id=l.target_article_id) and w.prev_id = w.curr_id and w.link_type_derived is not null;
-should be 0 */
-
+should be internal-link thus we can execute the next update - internal-self-loop */
 UPDATE clickstream_derived w SET w.link_type_derived="internal-self-loop"  WHERE EXISTS (SELECT 1 FROM unique_links l WHERE  w.prev_id=l.source_article_id AND w.curr_id=l.target_article_id) AND w.prev_id = w.curr_id;
+
 /*select count(*) from  clickstream_derived w WHERE not exists (SELECT 1 FROM unique_links l WHERE  w.prev_id=l.source_article_id AND w.curr_id=l.target_article_id) AND w.prev_id!=0 and w.curr_id!=0 and w.link_type_derived is not null;
- Should be 0 */
-
+ Should be 0 thus we can execute the next updates - internal-teleportation,internal-nonexistent */
 UPDATE clickstream_derived w SET w.link_type_derived="internal-teleportation" WHERE NOT EXISTS (SELECT 1 FROM unique_links l WHERE  w.prev_id=l.source_article_id AND w.curr_id=l.target_article_id) AND w.prev_id!=0 AND w.curr_id!=0;
-/*select count(*) from clickstream_derived w where not exists (Select 1 from articles  a where a.id =w.curr_id) and w.link_type_derived is not null;
- Should be 0 */
-
 UPDATE clickstream_derived w SET w.link_type_derived = "internal-nonexistent" WHERE NOT EXISTS (SELECT 1 FROM articles a WHERE a.id =w.curr_id);
 
+/*select count(*) from clickstream_derived where link_type_derived is null;
+Should be 0*/
 
 ALTER TABLE clickstream_derived ADD INDEX (link_type_derived);
 
