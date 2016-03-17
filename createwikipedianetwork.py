@@ -24,6 +24,6 @@ wikipedia.vertex_properties["eigenvector_centr"] = eigenvectorcentr
 print "kcore"
 wikipedia.vertex_properties["kcore"] = kcore_decomposition(wikipedia)
 
-wikipedia.save("wikipedianetwork.xml.gz")
+wikipedia.save("output/wikipedianetwork.xml.gz")
 
 
