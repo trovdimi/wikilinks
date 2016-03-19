@@ -56,7 +56,6 @@ clust = network.vertex_properties["local_clust"]
 #plt.xlabel('Local Clustering Coefficient C')
 #plt.ylabel('P(x<=C)')
 #plt.title('Clustering Coefficient Distribution')
-#plt.savefig('output/wikipedia-clust-cdf.png')
 #plt.savefig('output/wikipedia-clust-cdf.pdf')
 
 fig, ax = plt.subplots()
@@ -77,7 +76,6 @@ prank = network.vertex_properties["page_rank"]
 #plt.xlabel('Page rank Pr')
 #plt.ylabel('P(x<=Pr)')
 #plt.title('Page rank Distribution')
-#plt.savefig('output/wikipedia-prank-cdf.png')
 #plt.savefig('output/wikipedia-prank-cdf.pdf')
 fig, ax = plt.subplots()
 powerlaw.plot_cdf(prank.get_array(), ax)
@@ -96,7 +94,6 @@ kcore = network.vertex_properties["kcore"]
 #plt.xlabel('Kcore kC')
 #plt.ylabel('P(x<=kC)')
 #plt.title('K-Core Distribution')
-#plt.savefig('output/wikipedia-kcore-cdf.png')
 #plt.savefig('output/wikipedia-kcore-cdf.pdf')
 
 fig, ax = plt.subplots()
@@ -117,7 +114,6 @@ eigenvector_centr = network.vertex_properties["eigenvector_centr"]
 #plt.xlabel('Eigenvector Centrality E')
 #plt.ylabel('P(x<=E)')
 #plt.title('Eigenvector Centrality Distribution')
-#plt.savefig('output/wikipedia-eigenvcentr-cdf.png')
 #plt.savefig('output/wikipedia-eigenvcentr-cdf.pdf')
 
 fig, ax = plt.subplots()
@@ -142,7 +138,6 @@ plt.plot(out_hist[0], marker='o')
 plt.xlabel('Number of nodes')
 plt.ylabel('Degree')
 plt.title('Out-Degree Distribution')
-plt.savefig('output/wikipedia-transitions-out-deg-dist.png')
 plt.savefig('output/wikipedia-transitions-out-deg-dist.pdf')
 
 plt.clf()
@@ -154,7 +149,6 @@ plt.plot(in_hist[0], marker='o')
 plt.xlabel('Number of nodes')
 plt.ylabel('Degree')
 plt.title('In-Degree Distribution')
-plt.savefig('output/wikipedia-transitions-in-deg-dist.png')
 plt.savefig('output/wikipedia-transitions-in-deg-dist.pdf')
 
 plt.clf()
@@ -180,7 +174,6 @@ clust = network_transitions.vertex_properties["local_clust"]
 #plt.xlabel('Local Clustering Coefficient C')
 #plt.ylabel('P(x<=C)')
 #plt.title('Clustering Coefficient Distribution')
-#plt.savefig('output/wikipedia-transitions-clust-cdf.png')
 #plt.savefig('output/wikipedia-transitions-clust-cdf.pdf')
 
 fig, ax = plt.subplots()
@@ -200,7 +193,6 @@ prank = network_transitions.vertex_properties["page_rank"]
 #plt.xlabel('Page rank Pr')
 #plt.ylabel('P(x<=Pr)')
 #plt.title('Page rank Distribution')
-#plt.savefig('output/wikipedia-transitions-prank-cdf.png')
 #plt.savefig('output/wikipedia-transitions-prank-cdf.pdf')
 
 fig, ax = plt.subplots()
@@ -221,7 +213,6 @@ kcore = network_transitions.vertex_properties["kcore"]
 #plt.xlabel('Kcore kC')
 #plt.ylabel('P(x<=kC)')
 #plt.title('K-Core Distribution')
-#plt.savefig('output/wikipedia-transitions-kcore-cdf.png')
 #plt.savefig('output/wikipedia-transitions-kcore-cdf.pdf')
 
 fig, ax = plt.subplots()
@@ -243,7 +234,6 @@ eigenvector_centr = network_transitions.vertex_properties["eigenvector_centr"]
 #plt.xlabel('Eingenvector centrality E')
 #plt.ylabel('P(x<=E)')
 #plt.title('Eigenvector Centrality Distribution')
-#plt.savefig('output/wikipedia-transitions-eigenvcentr-cdf.png')
 #plt.savefig('output/wikipedia-transitions-eigenvcentr-cdf.pdf')
 
 
