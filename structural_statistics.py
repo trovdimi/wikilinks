@@ -10,7 +10,7 @@ import powerlaw
 
 # wikipedia  graph  structural statistics
 print 'before load'
-network = load_graph("output/wikipediaNetwork.xml.gz")
+network = load_graph("output/wikipedianetwork.xml.gz")
 print 'after load'
 out_hist = vertex_hist(network, "out")
 plt.gca().set_yscale('log')
@@ -128,7 +128,7 @@ plt.clf()
 
 # wikipedia transitions  graph  structural statistics
 print 'before load'
-network_transitions = load_graph("output/wikipediaNetworkFromTransitions.xml.gz")
+network_transitions = load_graph("output/transitionsnetwork.xml.gz")
 print 'after load'
 
 out_hist = vertex_hist(network_transitions, "out")
