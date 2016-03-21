@@ -317,7 +317,7 @@ class MySQLWorkView:
 
         coords = []
         try:
-            self._cursor.execute('select l.source_article_id, l.target_article_id, l.target_x_coord_1920_1080, l.target_y_coord_1920_1080, f.page_rank, f.in_degre, f.out_degree, f.degree, f.local_clustering, f.kcore, f.eigenvector_centr, p.page_length_1920_1080 from links l, article_features f, page_length p where l.target_article_id=f.id and  l.source_article_id = p.id and l.target_x_coord_1920_1080 is not Null and l.target_y_coord_1920_1080 is not Null  and l.target_x_coord_1920_1080!=0 and l.target_y_coord_1920_1080!=0;')
+            self._cursor.execute('select l.source_article_id, l.target_article_id, l.target_x_coord_1920_1080, l.target_y_coord_1920_1080, f.page_rank, f.in_degree, f.out_degree, f.degree, f.local_clustering, f.kcore, f.eigenvector_centr, p.page_length_1920_1080 from links l, article_features f, page_length p where l.target_article_id=f.id and  l.source_article_id = p.id and l.target_x_coord_1920_1080 is not Null and l.target_y_coord_1920_1080 is not Null  and l.target_x_coord_1920_1080!=0 and l.target_y_coord_1920_1080!=0;')
             result = self._cursor.fetchall()
             for row in result:
                 link = {}
@@ -325,7 +325,7 @@ class MySQLWorkView:
                 link['x'] = row[2]
                 link['y'] = row[3]
                 link['page_rank'] = row[4]
-                link['in_degre'] = row[5]
+                link['in_degree'] = row[5]
                 link['out_degre'] = row[6]
                 link['degre'] = row[7]
                 link['local_clustering'] = row[8]
