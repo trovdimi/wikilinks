@@ -453,4 +453,5 @@ class MySQLWorkView:
                 #coords.append(link)
         except MySQLdb.Error, e:
             logging.error('error retrieving xy coord for all links links %s (%d)' % (e.args[1], e.args[0]))
-        return coords
+        #return coords
+        return data
