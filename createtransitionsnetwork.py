@@ -13,19 +13,45 @@ for link in db_work_view.retrieve_all_transitions():
     wikipedia.add_edge(link['from'], link['to'])
     print 'from %s, to %s', link['from'], link['to']
 
+
+
+#wikipedia.save("output/transitionsnetwork.xml.gz")
+
+# filter all nodes that have no edges
+transitions_network = GraphView(wikipedia, vfilt=lambda v : v.out_degree()+v.in_degree()>0 )
+
 print "clust"
-wikipedia.vertex_properties["local_clust"] = local_clustering(wikipedia)
+transitions_network.vertex_properties["local_clust"] = local_clustering(transitions_network)
 
 print "page_rank"
-wikipedia.vertex_properties["page_rank"] = pagerank(wikipedia)
+transitions_network.vertex_properties["page_rank"] = pagerank(transitions_network)
 
 print "eigenvector_centr"
-eigenvalue, eigenvectorcentr = eigenvector(wikipedia)
-wikipedia.vertex_properties["eigenvector_centr"] = eigenvectorcentr
+eigenvalue, eigenvectorcentr = eigenvector(transitions_network)
+transitions_network.vertex_properties["eigenvector_centr"] = eigenvectorcentr
 
 print "kcore"
-wikipedia.vertex_properties["kcore"] = kcore_decomposition(wikipedia)
+transitions_network.vertex_properties["kcore"] = kcore_decomposition(transitions_network)
 
-wikipedia.save("output/transitionsnetwork.xml.gz")
+transitions_network.save("output/transitionsnetwork.xml.gz")
+
+print "Stats for transitions network:"
+print "number of nodes: %d",  transitions_network.num_verteces()
+print "number of edges: %d",  transitions_network.num_edges()
+
+scc_labels = label_largest_component(transitions_network, directed=True)
+wcc_labels = label_largest_component(transitions_network, directed=False)
+
+
+networks_transitions_scc = GraphView(transitions_network, vfilt=scc_labels)
+print "SCC for transitions network:"
+print "number of nodes: %d",  networks_transitions_scc.num_verteces()
+print "number of edges: %d",  networks_transitions_scc.num_edges()
+
+
+networks_transitions_wcc = GraphView(transitions_network, vfilt=wcc_labels)
+print "WKK for transitions network:"
+print "number of nodes: %d",  networks_transitions_wcc.num_verteces()
+print "number of edges: %d",  networks_transitions_wcc.num_edges()
 
 
