@@ -50,7 +50,7 @@ print "number of edges: %d",  networks_transitions_scc.num_edges()
 
 
 networks_transitions_wcc = GraphView(transitions_network, vfilt=wcc_labels)
-print "WKK for transitions network:"
+print "WCC for transitions network:"
 print "number of nodes: %d",  networks_transitions_wcc.num_verteces()
 print "number of edges: %d",  networks_transitions_wcc.num_edges()
 
