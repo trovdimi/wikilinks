@@ -343,94 +343,51 @@ class MySQLWorkView:
         return result
 
     def retrieve_all_links_coords_outdegree(self):
-
-        coords = []
+        result = []
         try:
-            self._cursor.execute('select l.source_article_id, l.target_article_id, l.target_x_coord_1920_1080, l.target_y_coord_1920_1080, f.out_degree, p.page_length_1920_1080 from links l, article_features f, page_length p where l.target_article_id=f.id and  l.source_article_id = p.id and l.target_x_coord_1920_1080 is not Null and l.target_y_coord_1920_1080 is not Null  and l.target_x_coord_1920_1080!=0 and l.target_y_coord_1920_1080!=0;')
+            self._cursor.execute('select l.target_x_coord_1920_1080, l.target_y_coord_1920_1080, f.out_degree, p.page_length_1920_1080 from links l, article_features f, page_length p where l.target_article_id=f.id and  l.source_article_id = p.id and l.target_x_coord_1920_1080 is not Null and l.target_y_coord_1920_1080 is not Null  and l.target_x_coord_1920_1080!=0 and l.target_y_coord_1920_1080!=0;')
             result = self._cursor.fetchall()
-            for row in result:
-                link = {}
-                link['key']= row[0], row[1]
-                link['x'] = row[2]
-                link['y'] = row[3]
-                link['out_degree'] = row[4]
-                link['page_length'] = row[5]
-                coords.append(link)
+
         except MySQLdb.Error, e:
             logging.error('error retrieving xy coord for all links links %s (%d)' % (e.args[1], e.args[0]))
-        return coords
+        return result
 
     def retrieve_all_links_coords_degree(self):
-
-        coords = []
+        result = []
         try:
-            self._cursor.execute('select l.source_article_id, l.target_article_id, l.target_x_coord_1920_1080, l.target_y_coord_1920_1080, f.degree, p.page_length_1920_1080 from links l, article_features f, page_length p where l.target_article_id=f.id and  l.source_article_id = p.id and l.target_x_coord_1920_1080 is not Null and l.target_y_coord_1920_1080 is not Null  and l.target_x_coord_1920_1080!=0 and l.target_y_coord_1920_1080!=0;')
+            self._cursor.execute('select l.target_x_coord_1920_1080, l.target_y_coord_1920_1080, f.degree, p.page_length_1920_1080 from links l, article_features f, page_length p where l.target_article_id=f.id and  l.source_article_id = p.id and l.target_x_coord_1920_1080 is not Null and l.target_y_coord_1920_1080 is not Null  and l.target_x_coord_1920_1080!=0 and l.target_y_coord_1920_1080!=0;')
             result = self._cursor.fetchall()
-            for row in result:
-                link = {}
-                link['key']= row[0], row[1]
-                link['x'] = row[2]
-                link['y'] = row[3]
-                link['degree'] = row[4]
-                link['page_length'] = row[5]
-                coords.append(link)
         except MySQLdb.Error, e:
             logging.error('error retrieving xy coord for all links links %s (%d)' % (e.args[1], e.args[0]))
-        return coords
+        return result
 
     def retrieve_all_links_coords_clustering(self):
-
-        coords = []
+        result = []
         try:
-            self._cursor.execute('select l.source_article_id, l.target_article_id, l.target_x_coord_1920_1080, l.target_y_coord_1920_1080, f.local_clustering, p.page_length_1920_1080 from links l, article_features f, page_length p where l.target_article_id=f.id and  l.source_article_id = p.id and l.target_x_coord_1920_1080 is not Null and l.target_y_coord_1920_1080 is not Null  and l.target_x_coord_1920_1080!=0 and l.target_y_coord_1920_1080!=0;')
+            self._cursor.execute('select l.target_x_coord_1920_1080, l.target_y_coord_1920_1080, f.local_clustering, p.page_length_1920_1080 from links l, article_features f, page_length p where l.target_article_id=f.id and  l.source_article_id = p.id and l.target_x_coord_1920_1080 is not Null and l.target_y_coord_1920_1080 is not Null  and l.target_x_coord_1920_1080!=0 and l.target_y_coord_1920_1080!=0;')
             result = self._cursor.fetchall()
-            for row in result:
-                link = {}
-                link['key']= row[0], row[1]
-                link['x'] = row[2]
-                link['y'] = row[3]
-                link['local_clustering'] = row[4]
-                link['page_length'] = row[5]
-                coords.append(link)
         except MySQLdb.Error, e:
             logging.error('error retrieving xy coord for all links links %s (%d)' % (e.args[1], e.args[0]))
-        return coords
+        return result
 
     def retrieve_all_links_coords_kcore(self):
 
-        coords = []
+        result = []
         try:
-            self._cursor.execute('select l.source_article_id, l.target_article_id, l.target_x_coord_1920_1080, l.target_y_coord_1920_1080, f.kcore, p.page_length_1920_1080 from links l, article_features f, page_length p where l.target_article_id=f.id and  l.source_article_id = p.id and l.target_x_coord_1920_1080 is not Null and l.target_y_coord_1920_1080 is not Null  and l.target_x_coord_1920_1080!=0 and l.target_y_coord_1920_1080!=0;')
+            self._cursor.execute('select l.target_x_coord_1920_1080, l.target_y_coord_1920_1080, f.kcore, p.page_length_1920_1080 from links l, article_features f, page_length p where l.target_article_id=f.id and  l.source_article_id = p.id and l.target_x_coord_1920_1080 is not Null and l.target_y_coord_1920_1080 is not Null  and l.target_x_coord_1920_1080!=0 and l.target_y_coord_1920_1080!=0;')
             result = self._cursor.fetchall()
-            for row in result:
-                link = {}
-                link['key']= row[0], row[1]
-                link['x'] = row[2]
-                link['y'] = row[3]
-                link['kcore'] = row[4]
-                link['page_length'] = row[5]
-                coords.append(link)
         except MySQLdb.Error, e:
             logging.error('error retrieving xy coord for all links links %s (%d)' % (e.args[1], e.args[0]))
-        return coords
+        return result
 
     def retrieve_all_links_coords_eigenvector(self):
-
-        coords = []
+        result = []
         try:
             self._cursor.execute('select l.source_article_id, l.target_article_id, l.target_x_coord_1920_1080, l.target_y_coord_1920_1080, f.eigenvector_centr, p.page_length_1920_1080 from links l, article_features f, page_length p where l.target_article_id=f.id and  l.source_article_id = p.id and l.target_x_coord_1920_1080 is not Null and l.target_y_coord_1920_1080 is not Null  and l.target_x_coord_1920_1080!=0 and l.target_y_coord_1920_1080!=0;')
             result = self._cursor.fetchall()
-            for row in result:
-                link = {}
-                link['key']= row[0], row[1]
-                link['x'] = row[2]
-                link['y'] = row[3]
-                link['kcore'] = row[4]
-                link['eigenvector_centr'] = row[5]
-                coords.append(link)
         except MySQLdb.Error, e:
             logging.error('error retrieving xy coord for all links links %s (%d)' % (e.args[1], e.args[0]))
-        return coords
+        return result
 
     def retrieve_internalcounts_degree(self):
         coords = []
