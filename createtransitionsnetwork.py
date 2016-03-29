@@ -11,7 +11,7 @@ wikipedia = Graph()
 
 for link in db_work_view.retrieve_all_transitions():
     wikipedia.add_edge(link['from'], link['to'])
-    print 'from %s, to %s', link['from'], link['to']
+    #print 'from %s, to %s', link['from'], link['to']
 
 
 
@@ -36,8 +36,8 @@ transitions_network.vertex_properties["kcore"] = kcore_decomposition(transitions
 transitions_network.save("output/transitionsnetwork.xml.gz")
 
 print "Stats for transitions network:"
-print "number of nodes: %d",  transitions_network.num_verteces()
-print "number of edges: %d",  transitions_network.num_edges()
+print "number of nodes: %d" %transitions_network.num_vertices()
+print "number of edges: %d" %transitions_network.num_edges()
 
 scc_labels = label_largest_component(transitions_network, directed=True)
 wcc_labels = label_largest_component(transitions_network, directed=False)
@@ -45,13 +45,13 @@ wcc_labels = label_largest_component(transitions_network, directed=False)
 
 networks_transitions_scc = GraphView(transitions_network, vfilt=scc_labels)
 print "SCC for transitions network:"
-print "number of nodes: %d",  networks_transitions_scc.num_verteces()
-print "number of edges: %d",  networks_transitions_scc.num_edges()
+print "number of nodes: %d" %networks_transitions_scc.num_vertices()
+print "number of edges: %d" %networks_transitions_scc.num_edges()
 
 
 networks_transitions_wcc = GraphView(transitions_network, vfilt=wcc_labels)
 print "WCC for transitions network:"
-print "number of nodes: %d",  networks_transitions_wcc.num_verteces()
-print "number of edges: %d",  networks_transitions_wcc.num_edges()
+print "number of nodes: %d"  %networks_transitions_wcc.num_vertices()
+print "number of edges: %d"  %networks_transitions_wcc.num_edges()
 
 
