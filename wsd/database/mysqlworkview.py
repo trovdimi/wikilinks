@@ -390,15 +390,15 @@ class MySQLWorkView:
         return result
 
     def retrieve_internalcounts_degree(self):
-        results = []
+        in_degree = []
+        counts = []
         try:
             self._cursor.execute('select a.in_degree, sum(c.counts) as counts from clickstream_derived c, article_features a where c.link_type_derived= %s  and a.id=c.curr_id  group by c.curr_id limit 500;', ("internal-link",))
             results = self._cursor.fetchall()
-            #for row in result:
-            #    link = {}
-            #    link['degree'] = row[0]
-            #    link['counts'] = row[1]
-            #    coords.append(link)
+            for row in result:
+                in_degree.append(row[0])
+                counts.append(row[1])
+
         except MySQLdb.Error, e:
             logging.error('error retrieving xy coord for all links links %s (%d)' % (e.args[1], e.args[0]))
-        return results
+        return in_degree,counts
