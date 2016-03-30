@@ -393,16 +393,26 @@ class MySQLWorkView:
         in_degree = []
         out_degree = []
         degree = []
+        page_rank = []
+        kcore = []
+        local_clust = []
+        eigenvector_centr =  []
         counts = []
         try:
-            self._cursor.execute('select a.in_degree, a.out_degree, a.degree, sum(c.counts) as counts from clickstream_derived c, article_features a where c.link_type_derived= %s  and a.id=c.curr_id  group by c.curr_id;', ("internal-link",))
+            self._cursor.execute('select a.in_degree, a.out_degree, a.degree, a.page_rank, a.kcore,a.local_clustering, a.eigenvector_centr, sum(c.counts) as counts from clickstream_derived c, article_features a where c.link_type_derived= %s  and a.id=c.curr_id  group by c.curr_id;', ("internal-link",))
             results = self._cursor.fetchall()
             for row in results:
                 in_degree.append(float(row[0]))
                 out_degree.append(float(row[1]))
                 degree.append(float(row[2]))
-                counts.append(float(row[3]))
+                page_rank.append(float(row[3]))
+                kcore.append(float(row[4]))
+                local_clust.append(float(row[5]))
+                eigenvector_centr.append(float(row[6]))
+                counts.append(float(row[7]))
 
         except MySQLdb.Error, e:
             logging.error('error retrieving xy coord for all links links %s (%d)' % (e.args[1], e.args[0]))
-        return in_degree,out_degree,degree,counts
+        return in_degree,out_degree,degree, page_rank, kcore, local_clust, eigenvector_centr, counts
+
+
