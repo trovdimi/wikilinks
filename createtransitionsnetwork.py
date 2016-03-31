@@ -9,7 +9,7 @@ db_work_view = db.get_work_view()
 
 wikipedia = Graph()
 
-for link in db_work_view.retrieve_all_transitions():
+for link in db_work_view.retrieve_all_internal_transitions():
     wikipedia.add_edge(link['from'], link['to'])
     #print 'from %s, to %s', link['from'], link['to']
 

@@ -203,6 +203,25 @@ class MySQLWorkView:
                     logging.error('error retrieving unique links %s (%d)' % (e.args[1], e.args[0]))
                 return links
 
+    def retrieve_all_internal_transitions(self):
+        """retrieves all internal links transitions from the wikipeida clickstream_derived that are an internal links. These are the network edges
+        @return a list of dictionaries holding the following keys:
+           'from': the source article id
+           'to': the target article id
+                """
+        links = []
+        try:
+            self._cursor.execute('SELECT * FROM clickstream_derived WHERE link_type_derived=%s;', ("internal-link",))
+            result = self._cursor.fetchall()
+            for row in result:
+                link = {}
+                link['from'] = row[0]
+                link['to'] = row[1]
+                links.append(link)
+        except MySQLdb.Error, e:
+            logging.error('error retrieving unique links %s (%d)' % (e.args[1], e.args[0]))
+        return links
+
     def retrieve_all_links_coords(self):
             """retrieves all xy coord for all links in wikipeida.
             @return a list of coords holding the following keys:
