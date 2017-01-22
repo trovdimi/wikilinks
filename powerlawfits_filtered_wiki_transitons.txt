@@ -1,0 +1,69 @@
+before load
+after load
+before load
+after load
+fitprev_id
+power law for network:  transitions
+alpha:  1.57339826327
+xmin:  1.0
+D 0.0718921175678
+distribution camparison power law - exponential:  (164.87317875167648, 0.0)
+distribution camparison power law - lognormal:  (-371.03762732434103, 0.0)
+distribution camparison power law - truncated:  (-277.02675479549021, 0.0)
+distribution camparison lognormal - truncated:  (90.849186033783582, 0.0)
+power law for network:  transitions
+alpha:  3.96953716722
+xmin:  272.0
+D 0.0179322258991
+distribution camparison power law - exponential:  (3.0157343703952759, 0.0025635773268453434)
+distribution camparison power law - lognormal:  (-0.049213462509440281, 0.96074918273612253)
+distribution camparison power law - truncated:  (0.0054114965440344078, 0.9916748417728346)
+distribution camparison lognormal - truncated:  (0.049329209015575096, 0.96065694241821642)
+power law for network:  transitions
+alpha:  1.48678775789
+xmin:  1.0
+D 0.103425627772
+distribution camparison power law - exponential:  (132.7393201747924, 0.0)
+distribution camparison power law - lognormal:  (-380.13118956838389, 0.0)
+distribution camparison power law - truncated:  (-332.23475317139315, 0.0)
+distribution camparison lognormal - truncated:  (54.338204464735703, 0.0)
+power law for network:  transitions
+alpha:  3.91764199831
+xmin:  214.0
+D 0.0187437083541
+distribution camparison power law - exponential:  (3.8060423682479265, 0.00014120820341794173)
+distribution camparison power law - lognormal:  (-2.3071349416690885, 0.021047298566399062)
+distribution camparison power law - truncated:  (-2.7805290887232514, 4.7427951543554947e-05)
+distribution camparison lognormal - truncated:  (-2.6118315470954738, 0.0090058616787238015)
+power law for network:  prev_id
+alpha:  1.35528275286
+xmin:  1.0
+D 0.13145712323
+distribution camparison power law - exponential:  (183.86040447806388, 0.0)
+distribution camparison power law - lognormal:  (-727.91744427478011, 0.0)
+distribution camparison power law - truncated:  (-217.73179099171725, 0.0)
+distribution camparison lognormal - truncated:  (36.940438646221722, 1.0371995520412756e-298)
+power law for network:  prev_id
+alpha:  2.6383576727
+xmin:  370.0
+D 0.00927393744499
+distribution camparison power law - exponential:  (19.498888293147136, 1.1219447870249208e-84)
+distribution camparison power law - lognormal:  (5.4159346877102141, 6.0969355333143152e-08)
+distribution camparison power law - truncated:  (0.0075750755473782804, 0.99668316411226643)
+distribution camparison lognormal - truncated:  (-5.4157851099442702, 6.1020352314454278e-08)
+power law for network:  prev_id
+alpha:  1.21461879482
+xmin:  1.0
+D 0.360343822848
+distribution camparison power law - exponential:  (-1018.5914372736471, 0.0)
+distribution camparison power law - lognormal:  (-1393.1318934084404, 0.0)
+distribution camparison power law - truncated:  (-3345.4518524668233, 0.0)
+distribution camparison lognormal - truncated:  (778.15454291845401, 0.0)
+power law for network:  prev_id
+alpha:  5.12206984744
+xmin:  1031.0
+D 0.00971768726242
+distribution camparison power law - exponential:  (6.0311455001189413, 1.6280152345358827e-09)
+distribution camparison power law - lognormal:  (-13.690815137755141, 1.1520950557345408e-42)
+distribution camparison power law - truncated:  (-3554.8248720278721, 0.18992776380711829)
+distribution camparison lognormal - truncated:  (-0.40071318156470842, 0.68863130479194712)

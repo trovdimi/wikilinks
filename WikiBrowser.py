@@ -9,7 +9,7 @@ import sys
 import time
 from xvfbwrapper import Xvfb
 import random
-__author__ = 'dimitrovdr'
+
 
 class WikiBrowser(QWebView):
 
@@ -82,17 +82,17 @@ class WikiBrowser(QWebView):
                 for suffix in range(1, num + 1):  # suffix starts at 1 and increases by 1 each time
                     keys[keys.index(s)] = s + '-----##$$$##-----' + str(suffix)
         self.positions = {k: v for k, v in zip(keys, values)}
-        #img = QImage(frame.contentsSize(), QImage.Format_ARGB32)
-        #paint = QPainter(img)
-        #print("rendering...")
-        #frame.render(paint)
-        #paint.end()
-        #img.save(self.out+"_"+str(self.resolution[0])+".png")
-        #print("... done")
-        #print("result: %s"%self.out)
+        img = QImage(frame.contentsSize(), QImage.Format_ARGB32)
+        paint = QPainter(img)
+        print("rendering...")
+        frame.render(paint)
+        paint.end()
+        img.save(self.out+"_"+str(self.resolution[0])+".png")
+        print("... done")
+        print("result: %s"%self.out)
         #print  html.findFirst("div[class=pyqt_is_shit]").geometry().topLeft().y()
         self.page_length = html.findFirst("div[class=pyqt_is_shit]").geometry().topLeft().y()
-        #print self.page_length
+        print self.page_length
         #self.punched.emit(self.page_length)
         #self.close()
         #print "done"
@@ -111,20 +111,24 @@ class WikiBrowser(QWebView):
 
 
 
-# if __name__ == '__main__':
-#     vdisplay = Xvfb()
-#     vdisplay.start()
-#     app = QApplication(sys.argv)
-#     browser = WikiBrowser((1366,768))
-#     #r = QUrl("./data/Ben_Eastman.html")
-#     read_data=''
-#     with codecs.open('./data/Ben_Eastman - Kopie.html', mode='r', encoding='utf-8') as f:
-#         read_data = f.read()
-#     #browser.web_view.setHtml(read_data, QUrl(QString('file:///home/ddimitrov/wikiwsd/data/')))
-#     browser.web_view.setHtml(read_data)
-#     position = browser.page_length()
-#     print position
-#     browser.show()
-#
-#     vdisplay.stop()
+if __name__ == '__main__':
+    #vdisplay = Xvfb()
+    #vdisplay.start()
+    os.environ["DISPLAY"]=":1"
+    app = QApplication(sys.argv)
+    #browser = WikiBrowser((1366,768))
+    #r = QUrl("./data/Ben_Eastman.html")
+    #read_data=''
+    with codecs.open('./data/Anarchism.htm', mode='r', encoding='utf-8') as f:
+        read_data = f.read()
+    #browser.web_view.setHtml(read_data, QUrl(QString('file:///home/ddimitrov/wikiwsd/data/')))
+    #browser.web_view.setHtml(read_data)
+    browser = WikiBrowser(read_data,(1920, 1080))
+    while not browser.finished:
+        app.processEvents()
+
+        #print browser.page_length
+    print browser.page_length
+
+    #vdisplay.stop()
 
